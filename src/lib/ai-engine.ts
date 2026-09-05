@@ -6,6 +6,9 @@ import {
   ReelScriptResult, 
   CalendarDayItem, 
   PosterResult,
+  GrowthIdeasResult,
+  SingleGrowthIdea,
+  WeeklyPlanItem,
   GenerationContentResult 
 } from '@/types';
 
@@ -42,6 +45,9 @@ export async function generateMarketingContent(input: GenerationInput): Promise<
 
     case 'poster':
       return generatePosterContent(input, isTamil, isBilingual, busName, busType, product, offer, location, cta);
+
+    case 'growth_ideas':
+      return generateGrowthIdeas(input, isTamil, isBilingual, busName, busType, product, location);
 
     default:
       throw new Error(`Unsupported content type: ${input.contentType}`);
@@ -434,4 +440,261 @@ function generatePosterContent(
       accentColor: '#6366f1'
     };
   }
+}
+
+// 7. BUSINESS GROWTH IDEAS GENERATOR
+function generateGrowthIdeas(
+  input: GenerationInput, 
+  isTamil: boolean, 
+  isBilingual: boolean, 
+  busName: string, 
+  busType: string, 
+  product: string, 
+  location: string
+): GrowthIdeasResult {
+  const selectedCat = input.selectedCategory || 'Business Ideas';
+  const challenges = input.currentChallenges || 'Scaling local customer acquisition and brand visibility';
+  const budget = input.marketingBudget || 'Low Budget';
+
+  // 3 Highest-Priority Actions
+  const topRecommendedActions = isTamil ? [
+    `1️⃣ WhatsApp Business Automation: ${busName} வாடிக்கையாளர்களுக்கு தானியங்கி சலுகை மற்றும் Follow-up செய்திகளை அனுப்பவும்.`,
+    `2️⃣ Local Google Business Profile Optimization: ${location}-இல் உள்ள வாடிக்கையாளர்கள் எளிதில் தேட Google Maps-இல் 5-Star Reviews பெறவும்.`,
+    `3️⃣ Reel & Short-Form Video Content: ${product} சேவைகளின் நன்மைகளை விளக்கி வாரத்திற்கு 3 ரீல்ஸ் வீடியோக்கள் வெளியிடவும்.`
+  ] : [
+    `1️⃣ Instant WhatsApp Lead Automation: Setup automated reply & catalog sharing on WhatsApp for every new lead inquiring about ${product}.`,
+    `2️⃣ Google Maps & Local SEO Push: Optimize ${busName} on Google Business Profile to capture high-intent local search queries in ${location}.`,
+    `3️⃣ High-Impact Reel Campaigns: Publish 3 weekly short-form video reels highlighting customer transformation and before/after proofs.`
+  ];
+
+  // 30-Day Growth Plan
+  const thirtyDayPlan: WeeklyPlanItem[] = isTamil ? [
+    {
+      weekNumber: 1,
+      title: 'வார 1: அடித்தளம் & டிஜிட்டல் அமைப்புகள் (Foundation)',
+      actionItems: [
+        `Google Business Profile பக்கம் அமைத்து ${location}-இல் லொகேஷன் மேப் பின் செய்யவும்.`,
+        `WhatsApp Business கணக்கில் ${product} விபரங்கள் அடங்கிய Catalog சேர்க்கவும்.`,
+        `${busName} சோஷியல் மீடியா கணக்குகளின் பயோ (Bio) மற்றும் தொடர்பு எண்களை சரிபார்க்கவும்.`
+      ]
+    },
+    {
+      weekNumber: 2,
+      title: 'வார 2: உள்ளடக்க உருவாக்கம் (Content Production)',
+      actionItems: [
+        `3 குறுகிய ரீல்ஸ் (Reels) வீடியோக்கள் பதிவு செய்து வெளியிடவும்.`,
+        `நிறைவான சேவை பெற்ற 5 வாடிக்கையாளர்களிடம் Google 5-Star Review பெறவும்.`,
+        `சிறப்பு விளம்பர போஸ்டர் ஒன்றை தயாரித்து வாட்ஸ்அப் ஸ்டேட்டஸில் பகிரவும்.`
+      ]
+    },
+    {
+      weekNumber: 3,
+      title: 'வார 3: வாடிக்கையாளர் ஈர்ப்பு & சலுகைகள் (Engagement)',
+      actionItems: [
+        `பழைய வாடிக்கையாளர்களுக்கு ரீ-என்ஃகேஜ்மென்ட் (Re-engagement) மெசேஜ் அனுப்பவும்.`,
+        `நண்பர்களை பரிந்துரைக்கும் (Refer-a-Friend) திட்டத்தை அறிமுகப்படுத்தவும்.`,
+        `உள்ளூர் வாட்ஸ்அப் குழுக்களில் பிரத்யேக சலுகை செய்திகளை பகிரவும்.`
+      ]
+    },
+    {
+      weekNumber: 4,
+      title: 'வார 4: மதிப்பீடு & அடுத்தகட்ட வளர்ச்சி (Scale)',
+      actionItems: [
+        `கடந்த 3 வாரங்களில் அதிக வரவேற்பு பெற்ற விளம்பரங்களை கண்டறியவும்.`,
+        `அதிக வாடிக்கையாளர்களை ஈர்த்த உள்ளடக்கத்தை மீண்டும் புதுப்பித்து வெளியிடவும்.`,
+        `அடுத்த மாதத்திற்கான 30-நாள் மார்க்கெட்டிங் காலண்டரை இறுதி செய்யவும்.`
+      ]
+    }
+  ] : [
+    {
+      weekNumber: 1,
+      title: 'Week 1: Digital Foundation & Automation Setup',
+      actionItems: [
+        `Claim and optimize ${busName} on Google Business Profile with location tags for ${location}.`,
+        `Configure WhatsApp Business with instant automated greeting & catalog for ${product}.`,
+        `Audit Instagram & Facebook profiles ensuring clear CTAs and contact details.`
+      ]
+    },
+    {
+      weekNumber: 2,
+      title: 'Week 2: Content Engine & Local Proof',
+      actionItems: [
+        `Produce and schedule 3 high-converting short video reels demonstrating ${product}.`,
+        `Collect 5 genuine 5-star Google reviews from satisfied recent customers.`,
+        `Launch a broadcast campaign to existing contacts sharing key business updates.`
+      ]
+    },
+    {
+      weekNumber: 3,
+      title: 'Week 3: Outreach & Partnership Campaign',
+      actionItems: [
+        `Initiate a Customer Referral Incentive ("Refer a friend and get priority perks").`,
+        `Partner with 2 complementary non-competing local businesses in ${location} for cross-promotion.`,
+        `Run a targeted weekly offer post across social media channels.`
+      ]
+    },
+    {
+      weekNumber: 4,
+      title: 'Week 4: Review, Refine & Scale Strategy',
+      actionItems: [
+        `Analyze which content generated the highest inquiries and calls.`,
+        `Double down on top-performing post formats and refine CTA messaging.`,
+        `Finalize the content strategy and campaign pipeline for the upcoming month.`
+      ]
+    }
+  ];
+
+  // 12 Highly Relevant Practical Growth Ideas
+  const ideas: SingleGrowthIdea[] = [
+    {
+      id: 'idea_01',
+      ideaName: '🚀 Local VIP Loyalty & Referral Club',
+      category: 'Business Ideas',
+      explanation: 'Create a simple digital referral pass where existing customers get exclusive perks when they introduce friends.',
+      whyItHelps: `Word-of-mouth is the #1 growth driver for ${busType} in ${location}.`,
+      howToImplement: 'Send a formatted WhatsApp reward pass to your top 20 loyal clients inviting them to refer.',
+      difficulty: 'Easy',
+      cost: '₹0 (Free)',
+      impact: 'High Impact',
+      platform: 'WhatsApp'
+    },
+    {
+      id: 'idea_02',
+      ideaName: '📱 Before/After Transformation Reels',
+      category: 'Digital Marketing Ideas',
+      explanation: 'Record 15-second raw, authentic clips showing customer results or service delivery in action.',
+      whyItHelps: 'Short reels build immediate trust and generate 3x higher organic reach on Instagram.',
+      howToImplement: 'Use your phone to film 5-second before, process, and outcome shots. Pair with trending BGM.',
+      difficulty: 'Easy',
+      cost: '₹0 (Free)',
+      impact: 'High Impact',
+      platform: 'Instagram'
+    },
+    {
+      id: 'idea_03',
+      ideaName: '🤖 AI WhatsApp Auto-responder & FAQ Bot',
+      category: 'AI Ideas',
+      explanation: 'Automate customer inquiry replies on WhatsApp so leads get instant answers 24/7.',
+      whyItHelps: 'Prevents losing impatient leads during non-business hours.',
+      howToImplement: 'Use WhatsApp Business Quick Replies & Auto-Greeting feature configured for common questions.',
+      difficulty: 'Easy',
+      cost: '₹0 (Free)',
+      impact: 'High Impact',
+      platform: 'WhatsApp'
+    },
+    {
+      id: 'idea_04',
+      ideaName: '📈 Google Business Profile 5-Star Campaign',
+      category: 'Growth Strategies',
+      explanation: 'Systematically collect 20+ Google reviews from happy clients in ${location}.',
+      whyItHelps: 'Google prioritizes businesses with higher reviews in local map searches.',
+      howToImplement: 'Create a direct Google Review QR code link and place it at checkout or send post-service on WhatsApp.',
+      difficulty: 'Easy',
+      cost: '₹0 (Free)',
+      impact: 'High Impact',
+      platform: 'Google'
+    },
+    {
+      id: 'idea_05',
+      ideaName: '💰 Bundled Value Packages & Subscriptions',
+      category: 'Revenue Ideas',
+      explanation: `Bundle complementary ${product} items into quarterly or monthly combo deals.`,
+      whyItHelps: 'Increases average order value and guarantees predictable recurring revenue.',
+      howToImplement: 'Design 3 bundled pricing tiers (Basic, Gold, VIP) with attractive savings badges.',
+      difficulty: 'Medium',
+      cost: 'Low Cost',
+      impact: 'High Impact',
+      platform: 'Website'
+    },
+    {
+      id: 'idea_06',
+      ideaName: '🎯 "Weekend Special" Flash Campaign',
+      category: 'Marketing Campaign Ideas',
+      explanation: 'Run a 48-hour limited-time marketing campaign pushed exclusively on Friday mornings.',
+      whyItHelps: 'Creates urgency and drives immediate weekend footfall or bookings.',
+      howToImplement: 'Post a countdown story on Instagram and send a broadcast message on WhatsApp.',
+      difficulty: 'Easy',
+      cost: '₹0 (Free)',
+      impact: 'Medium',
+      platform: 'WhatsApp'
+    },
+    {
+      id: 'idea_07',
+      ideaName: '🚀 Cross-Promotion with Complementary Local Stores',
+      category: 'Business Ideas',
+      explanation: `Partner with nearby non-competing shops in ${location} to swap promotional flyers/coupons.`,
+      whyItHelps: 'Tap into established customer bases with zero ad spend.',
+      howToImplement: 'Approach 2 local partners and offer reciprocal discount cards for their customers.',
+      difficulty: 'Medium',
+      cost: 'Low Cost',
+      impact: 'Medium',
+      platform: 'Offline'
+    },
+    {
+      id: 'idea_08',
+      ideaName: '📱 Hyper-Local Geo-Targeted Meta Ads',
+      category: 'Digital Marketing Ideas',
+      explanation: 'Run Instagram/Facebook ads focused strictly within a 3-5 km radius of your location.',
+      whyItHelps: 'Eliminates wasted ad spend by showing ads only to people who can actually visit or buy.',
+      howToImplement: 'Set radius targeting in Meta Ads Manager with a modest ₹100-200/day budget.',
+      difficulty: 'Medium',
+      cost: 'Low Cost',
+      impact: 'High Impact',
+      platform: 'Instagram'
+    },
+    {
+      id: 'idea_09',
+      ideaName: '🤖 AI Automated Content Generation Engine',
+      category: 'AI Ideas',
+      explanation: 'Use HARI BUSINESS BOT to generate monthly captions, scripts, and poster copy in advance.',
+      whyItHelps: 'Saves 15+ hours every month while maintaining consistent daily social posting.',
+      howToImplement: 'Generate a 30-day Content Calendar and batch create marketing assets every Sunday.',
+      difficulty: 'Easy',
+      cost: '₹0 (Free)',
+      impact: 'High Impact',
+      platform: 'Website'
+    },
+    {
+      id: 'idea_10',
+      ideaName: '📈 Reactivation Campaign for Lapsed Customers',
+      category: 'Growth Strategies',
+      explanation: 'Reach out to customers who haven\'t purchased in the last 60 days with a personalized message.',
+      whyItHelps: 'Re-activating past customers costs 5x less than acquiring brand new ones.',
+      howToImplement: 'Export your contact list, filter inactive clients, and send a warm "We miss you" perk.',
+      difficulty: 'Easy',
+      cost: '₹0 (Free)',
+      impact: 'High Impact',
+      platform: 'WhatsApp'
+    },
+    {
+      id: 'idea_11',
+      ideaName: '💰 Festival & Seasonal Campaign Pass',
+      category: 'Revenue Ideas',
+      explanation: 'Offer pre-booked seasonal passes ahead of upcoming festivals or peak demand periods.',
+      whyItHelps: 'Secures upfront cash flow and locks in customer commitments.',
+      howToImplement: 'Announce early-bird festival reservations with priority booking benefits.',
+      difficulty: 'Medium',
+      cost: 'Low Cost',
+      impact: 'High Impact',
+      platform: 'Instagram'
+    },
+    {
+      id: 'idea_12',
+      ideaName: '🎯 "Customer Spotlight" Social Campaign',
+      category: 'Marketing Campaign Ideas',
+      explanation: 'Feature real customer stories and reviews weekly as authentic social proof.',
+      whyItHelps: 'Builds social credibility and encourages tagged customers to share on their stories.',
+      howToImplement: 'Design a clean quote template and post customer appreciation stories every Wednesday.',
+      difficulty: 'Easy',
+      cost: '₹0 (Free)',
+      impact: 'Medium',
+      platform: 'Instagram'
+    }
+  ];
+
+  return {
+    topRecommendedActions,
+    thirtyDayPlan,
+    ideas
+  };
 }

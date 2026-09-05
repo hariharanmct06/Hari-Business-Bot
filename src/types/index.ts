@@ -4,7 +4,8 @@ export type ToolType =
   | 'instagram' 
   | 'whatsapp' 
   | 'reel_script' 
-  | 'calendar';
+  | 'calendar'
+  | 'growth_ideas';
 
 export type LanguageOption = 'English' | 'Tamil' | 'Tamil + English';
 
@@ -22,6 +23,14 @@ export type PosterStyle =
   | 'Festival' 
   | 'Minimal' 
   | 'Local Business';
+
+export type GrowthCategory = 
+  | 'Business Ideas'
+  | 'Digital Marketing Ideas'
+  | 'AI Ideas'
+  | 'Growth Strategies'
+  | 'Revenue Ideas'
+  | 'Marketing Campaign Ideas';
 
 export type PlanType = 'free' | 'starter' | 'business';
 
@@ -62,6 +71,10 @@ export interface GenerationInput {
   calendarDuration?: '7' | '14' | '30';
   posterStyle?: PosterStyle;
   posterDate?: string;
+  // Growth Ideas specific options
+  currentChallenges?: string;
+  marketingBudget?: string;
+  selectedCategory?: GrowthCategory;
 }
 
 export interface AdvertisementResult {
@@ -123,13 +136,39 @@ export interface PosterResult {
   accentColor: string;
 }
 
+export interface SingleGrowthIdea {
+  id: string;
+  ideaName: string;
+  explanation: string;
+  whyItHelps: string;
+  howToImplement: string;
+  difficulty: 'Easy' | 'Medium' | 'Advanced';
+  cost: '₹0 (Free)' | 'Low Cost' | 'Medium' | 'High';
+  impact: 'Low' | 'Medium' | 'High Impact';
+  platform: string;
+  category: string;
+}
+
+export interface WeeklyPlanItem {
+  weekNumber: number;
+  title: string;
+  actionItems: string[];
+}
+
+export interface GrowthIdeasResult {
+  topRecommendedActions: string[];
+  thirtyDayPlan: WeeklyPlanItem[];
+  ideas: SingleGrowthIdea[];
+}
+
 export type GenerationContentResult = 
   | AdvertisementResult 
   | InstagramResult 
   | WhatsAppResult 
   | ReelScriptResult 
   | CalendarDayItem[] 
-  | PosterResult;
+  | PosterResult
+  | GrowthIdeasResult;
 
 export interface GenerationItem {
   id: string;

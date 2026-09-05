@@ -20,6 +20,13 @@ import { useApp } from '@/lib/store';
 
 const featureCards = [
   {
+    title: '💡 Business Growth Ideas',
+    description: 'Get AI-powered practical, creative growth ideas & 30-day strategy.',
+    href: '/dashboard/growth-ideas',
+    color: 'from-amber-500/20 via-orange-500/20 to-pink-500/20 border-amber-500/40 text-amber-300',
+    btnColor: 'bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-extrabold'
+  },
+  {
     title: '📢 Create Advertisement',
     description: 'Generate professional promotional content.',
     href: '/dashboard/ads',

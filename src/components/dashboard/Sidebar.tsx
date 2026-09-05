@@ -17,13 +17,14 @@ import {
   Bot,
   Zap,
   ShieldCheck,
-  Crown
+  Crown,
+  Lightbulb
 } from 'lucide-react';
 import { useApp } from '@/lib/store';
 
 const navItems = [
   { name: 'Dashboard', href: '/dashboard', icon: Home },
-  { name: 'Create', href: '/dashboard/ads', icon: Sparkles },
+  { name: 'Growth Ideas', href: '/dashboard/growth-ideas', icon: Lightbulb },
   { name: 'Advertisements', href: '/dashboard/ads', icon: Megaphone },
   { name: 'Posters', href: '/dashboard/posters', icon: Palette },
   { name: 'Social Media', href: '/dashboard/instagram', icon: Share2 },
