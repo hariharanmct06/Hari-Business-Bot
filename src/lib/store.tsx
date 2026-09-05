@@ -33,7 +33,7 @@ const defaultProfile: BusinessProfile = {
   name: 'Hari Bot & Business Solutions',
   type: 'AI & Business Solutions',
   location: 'Main Road, Chennai',
-  phone: '9876543210',
+  phone: '8667808803',
   website: 'www.haribotbusiness.com',
   instagram: '@haribot_business_official',
   preferredLanguage: 'Tamil + English',

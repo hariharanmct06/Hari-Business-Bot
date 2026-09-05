@@ -133,7 +133,7 @@ export default function OnboardingPage() {
                 required
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                placeholder="e.g. 98765 43210"
+                placeholder="e.g. 8667808803"
                 className="w-full bg-[#0b0f19] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500 transition-colors"
               />
             </div>

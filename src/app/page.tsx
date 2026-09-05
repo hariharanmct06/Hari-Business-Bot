@@ -132,7 +132,7 @@ export default function LandingPage() {
                 {/* Mock Output Snippet */}
                 <div className="bg-indigo-950/40 p-3.5 rounded-xl border border-indigo-500/30 text-xs font-tamil text-gray-200">
                   <div className="text-[10px] text-indigo-400 uppercase font-bold mb-1">Generated Output (Tamil)</div>
-                  🔥 <strong>Hari Bot & Business Solutions</strong>-இல் 50% Independence Day தள்ளுபடி! AI & Digital Marketing வகுப்புகளில் இன்றே சேருங்கள்! 📞 98765 43210
+                  🔥 <strong>Hari Bot & Business Solutions</strong> – உங்கள் வணிக வளர்ச்சிக்கான AI & Digital Marketing சேவைகள்! 📞 8667808803
                 </div>
               </div>
             </div>

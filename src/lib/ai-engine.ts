@@ -61,60 +61,67 @@ function generateAdvertisement(
   cta: string
 ): AdvertisementResult {
   if (isTamil) {
+    const isHariBot = busName.toLowerCase().includes('hari bot');
     return {
-      headline: `🔥 ${busName}-இல் சிறப்பு சலுகை! உங்கள் ${busType} தேவைகளுக்கு சிறந்த இடம்!`,
-      subheadline: `${product} சேவைகளில் இப்போது பிரம்மாண்ட ${offer}`,
-      mainAd: `வணக்கம்! ${location}-இல் செயல்படும் நமது ${busName} உங்களை அன்போடு வரவேற்கிறது!
+      headline: isHariBot 
+        ? `🔥 Hari Bot & Business Solutions – உங்கள் வணிக வளர்ச்சிக்கான AI & Digital Marketing சேவைகள்!`
+        : `🔥 ${busName}-இல் சிறப்பு அறிவிப்பு! உங்கள் ${busType} தேவைகளுக்கான சிறந்த இடம்!`,
+      subheadline: isHariBot
+        ? `உயர்தர AI & Digital Marketing தீர்வுகளுடன் உங்கள் தொழிலை அடுத்த கட்டத்திற்கு கொண்டு செல்லுங்கள்!`
+        : `${product} சேவைகளில் இப்போது சிறப்பான ${offer}`,
+      mainAd: isHariBot
+        ? `வணக்கம்! ${location}-இல் செயல்படும் நமது ${busName} உங்களை அன்போடு வரவேற்கிறது!
+
+உங்கள் வணிகத்தை வேகமாக வளர்க்க AI & Digital Marketing சேவைகளை தேடுகிறீர்களா?
+
+✨ எங்களிடம் கிடைக்கும் சேவைகள்:
+• AI Marketing Content & Strategy
+• Instagram & Social Media Campaign Growth
+• WhatsApp Marketing Automation
+• 100% நம்பகமான உயர்தர டிஜிட்டல் வளர்ச்சி சேவைகள்`
+        : `வணக்கம்! ${location}-இல் செயல்படும் நமது ${busName} உங்களை அன்போடு வரவேற்கிறது!
 
 நீங்கள் மிகச்சிறந்த ${product} சேவையை தேடுகிறீர்களா? கவலை வேண்டாம்! 
 
 ✨ எங்களிடம் கிடைக்கும் சிறப்பம்சங்கள்:
 • 100% தரமான மற்றும் நம்பகமான சேவை
 • அனுபவம் வாய்ந்த வல்லுநர்கள்
-• பட்ஜெட் விலையில் உயர்தர முடிவுகள்
-
-🎁 சிறப்பு திருவிழா சலுகை: ${offer}!
-இந்த அரிய வாய்ப்பை தவறவிடாதீர்கள்!`,
-      offer: offer,
-      cta: `📍 முகவரி: ${location}\n📞 தொடர்புக்கு: 98765 43210 | ${cta}`,
-      hashtags: [`#${busName.replace(/\s+/g, '')}`, `#${busType.replace(/\s+/g, '')}`, '#LocalBusinessTamil', `#${location.replace(/\s+/g, '')}`, '#SpecialOfferTamil']
+• பட்ஜெட் விலையில் உயர்தர முடிவுகள்`,
+      offer: isHariBot ? `AI & Digital Marketing Services` : offer,
+      cta: `📍 முகவரி: ${location}\n📞 தொடர்புக்கு: 8667808803`,
+      hashtags: [`#${busName.replace(/\s+/g, '')}`, '#AIDigitalMarketing', '#BusinessGrowthTamil', `#${location.replace(/\s+/g, '')}`, '#DigitalMarketingTamil']
     };
   } else if (isBilingual) {
     return {
-      headline: `✨ Super Offer at ${busName}! ${busType} Special!`,
-      subheadline: `Get ${offer} on all ${product} services in ${location}!`,
+      headline: `✨ Hari Bot & Business Solutions - AI & Digital Marketing Services!`,
+      subheadline: `Grow your business with premium AI & Digital Marketing solutions in ${location}!`,
       mainAd: `Vanakkam ${location}! 🙏 
 
-Are you looking for the best ${product} near you? ${busName} is here to solve your needs!
+Are you looking to scale your business using AI & Digital Marketing? Hari Bot & Business Solutions is here to accelerate your growth!
 
-🔥 Why choose ${busName}?
-✓ Experienced & Friendly Staff
-✓ Top-Quality Service Guaranteed
-✓ Affordable Pricing with Festival Discounts
-
-🎁 Exclusive Offer: ${offer}!
-Ippo Vanga, Semma Offer Allunga! Don't miss out on this limited period deal.`,
-      offer: offer,
-      cta: `📍 Visit: ${location} | 📞 Contact: 98765 43210 | ${cta}`,
-      hashtags: [`#${busName.replace(/\s+/g, '')}`, '#TamilEnglishMarketing', '#OfferAlert', `#${location.replace(/\s+/g, '')}`, '#BestService']
+🔥 Why choose Hari Bot & Business Solutions?
+✓ 100% Result-Oriented Digital Marketing
+✓ Advanced AI Marketing Automation
+✓ Tailored Strategies for Local Business Success`,
+      offer: `AI & Digital Marketing Services`,
+      cta: `📍 Visit: ${location} | 📞 Contact: 8667808803`,
+      hashtags: [`#${busName.replace(/\s+/g, '')}`, '#TamilEnglishMarketing', '#AIDigitalMarketing', `#${location.replace(/\s+/g, '')}`, '#BestService']
     };
   } else {
     return {
-      headline: `🚀 Upgrade Your Experience with ${busName} - Exclusive Offer!`,
-      subheadline: `Premium ${product} solutions delivered with excellence. Enjoy ${offer}!`,
-      mainAd: `Looking for top-tier ${product}? Welcome to ${busName}, your trusted ${busType} in ${location}.
+      headline: `🚀 Scale Your Business with Hari Bot & Business Solutions!`,
+      subheadline: `Premium AI & Digital Marketing solutions delivered with excellence.`,
+      mainAd: `Looking for top-tier AI & Digital Marketing? Welcome to ${busName}, your trusted marketing partner in ${location}.
 
-We take pride in offering high-quality solutions tailored to your unique requirements. Whether you are looking for reliability, speed, or incredible value, we have you covered.
+We take pride in offering high-quality growth solutions tailored to your unique business requirements.
 
 🌟 Key Highlights:
-• Professional & Reliable Customer Support
-• Cutting-Edge Technology & Fast Service
-• Transparent Pricing with Zero Hidden Costs
-
-🎉 Special Promotion: ${offer}`,
-      offer: offer,
-      cta: `📍 Location: ${location} | 📞 Book Now: 98765 43210 | ${cta}`,
-      hashtags: [`#${busName.replace(/\s+/g, '')}`, `#${busType.replace(/\s+/g, '')}`, '#BusinessGrowth', `#${location.replace(/\s+/g, '')}`, '#LimitedPeriodOffer']
+• Professional & Reliable Strategy Support
+• Cutting-Edge AI Technology & Fast Execution
+• Transparent Services for Maximum ROI`,
+      offer: `AI & Digital Marketing Services`,
+      cta: `📍 Location: ${location} | 📞 Book Now: 8667808803`,
+      hashtags: [`#${busName.replace(/\s+/g, '')}`, `#${busType.replace(/\s+/g, '')}`, '#BusinessGrowth', `#${location.replace(/\s+/g, '')}`, '#AIDigitalMarketing']
     };
   }
 }
@@ -210,36 +217,36 @@ function generateWhatsApp(
 • மிகக்குறைந்த கட்டணம்
 
 📍 *முகவரி:* ${location}
-📞 *தொடர்புகொள்ள / முன்பதிவு செய்ய:* 98765 43210
+📞 *தொடர்புகொள்ள / முன்பதிவு செய்ய:* 8667808803
 
-தாமதிக்காதீர்கள்! சலுகை குறைந்த நாட்களுக்கு மட்டுமே! 🏃‍♂️💨
+தாமதிக்காதீர்கள்! இன்றே தொடர்பு கொள்ளுங்கள்! 🏃‍♂️💨
 ${cta}`;
   } else if (isBilingual) {
     msg = `🔥 *ATTENTION ${location.toUpperCase()} MAKKALE!* 🔥
 
-*${busName}* brings you an exciting offer you cannot resist! 🥳
+*${busName}* brings you premier AI & Digital Marketing services! 🥳
 
-🎁 *Special Offer:*
-👉 *${offer}* on all *${product}* orders/services!
+🎁 *Special Services:*
+👉 *${product}* for business growth!
 
 📍 *Location:* ${location}
-📞 *Contact / WhatsApp:* 98765 43210
+📞 *Contact / WhatsApp:* 8667808803
 
-Ippo call panni unga slot-a book pannunga! Offer ending soon! ⏳
+Ippo call panni unga slot-a book pannunga! ⏳
 ${cta}`;
   } else {
     msg = `🔥 *SPECIAL PROMOTION FROM ${busName.toUpperCase()}!* 🔥
 
-Hello! Thank you for choosing *${busName}* (${busType}). We are excited to present our exclusive limited-time deal!
+Hello! Thank you for choosing *${busName}* (${busType}). We are excited to present our growth solutions!
 
-🎁 *Special Discount:*
-👉 *${offer}* on *${product}*!
+🎁 *Special Services:*
+👉 *${product}*!
 
 📍 *Location:* ${location}
-📞 *Phone / WhatsApp:* +91 98765 43210
+📞 *Phone / WhatsApp:* 8667808803
 🌐 *Website:* ${input.businessName.toLowerCase().replace(/\s+/g, '')}.com
 
-Don't miss out on this premium offer. Contact us today to reserve your spot! 🚀
+Contact us today to grow your business! 🚀
 ${cta}`;
   }
 
@@ -407,7 +414,7 @@ function generatePosterContent(
       offer: `🔥 ${offer} 🔥`,
       bodyText: `உயர்தர சேவை • குறைந்த கட்டணம் • நம்பகத்தன்மை! இன்றே வருகை தாருங்கள்.`,
       dateBadge: input.posterDate || 'சிறப்பு திருவிழா சலுகை!',
-      contactText: `📞 தொடர்புக்கு: 98765 43210`,
+      contactText: `📞 தொடர்புக்கு: 8667808803`,
       locationText: `📍 ${location}`,
       style: style,
       bgColor: '#0f172a',
@@ -420,7 +427,7 @@ function generatePosterContent(
       offer: offer,
       bodyText: `Experience world-class ${product} tailored to perfection. Special limited-time promotion!`,
       dateBadge: input.posterDate || 'SPECIAL OFFER VALID THIS MONTH',
-      contactText: `📞 Call Us: +91 98765 43210`,
+      contactText: `📞 Call Us: 8667808803`,
       locationText: `📍 Location: ${location}`,
       style: style,
       bgColor: '#0f172a',
