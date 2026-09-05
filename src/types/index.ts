@@ -32,7 +32,7 @@ export type GrowthCategory =
   | 'Revenue Ideas'
   | 'Marketing Campaign Ideas';
 
-export type PlanType = 'free' | 'starter' | 'business';
+export type PlanType = 'free' | 'pro_business';
 
 export interface BusinessProfile {
   name: string;

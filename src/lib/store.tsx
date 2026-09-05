@@ -11,6 +11,8 @@ import {
 } from '@/types';
 import { generateMarketingContent } from './ai-engine';
 
+export type ThemeMode = 'light' | 'dark';
+
 interface AppContextType {
   user: User | null;
   history: GenerationItem[];
@@ -19,6 +21,8 @@ interface AppContextType {
   isUsageLimitReached: boolean;
   showUpgradeModal: boolean;
   setShowUpgradeModal: (show: boolean) => void;
+  theme: ThemeMode;
+  toggleTheme: () => void;
   login: (email: string) => void;
   logout: () => void;
   signup: (name: string, email: string) => void;
@@ -52,15 +56,15 @@ const defaultUser: User = {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
-const MAX_FREE_LIMIT = 5;
-const MAX_STARTER_LIMIT = 100;
-const MAX_BUSINESS_LIMIT = 500;
+const MAX_FREE_LIMIT = 10;
+const UNLIMITED_LIMIT = 999999;
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(defaultUser);
   const [history, setHistory] = useState<GenerationItem[]>([]);
-  const [usageCount, setUsageCount] = useState<number>(1);
+  const [usageCount, setUsageCount] = useState<number>(0);
   const [showUpgradeModal, setShowUpgradeModal] = useState<boolean>(false);
+  const [theme, setTheme] = useState<ThemeMode>('dark');
 
   // Initialize state from local storage on client mount
   useEffect(() => {
@@ -68,10 +72,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       const savedUser = localStorage.getItem('hbb_user');
       const savedHistory = localStorage.getItem('hbb_history');
       const savedUsage = localStorage.getItem('hbb_usage');
+      const savedTheme = localStorage.getItem('hbb_theme') as ThemeMode;
 
       if (savedUser) {
         const parsed = JSON.parse(savedUser);
-        // Automatically migrate any legacy stored CSC name/type
         if (parsed?.profile?.name?.includes('CSC') || parsed?.profile?.type === 'Computer Centre') {
           parsed.profile.name = 'Hari Bot & Business Solutions';
           parsed.profile.type = 'AI & Business Solutions';
@@ -80,12 +84,33 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       }
       if (savedHistory) setHistory(JSON.parse(savedHistory));
       if (savedUsage) setUsageCount(parseInt(savedUsage, 10));
+      if (savedTheme === 'light' || savedTheme === 'dark') {
+        setTheme(savedTheme);
+      }
     } catch (e) {
       console.error('Failed to load storage:', e);
     }
   }, []);
 
-  // Sync to local storage
+  // Sync theme to HTML root element
+  useEffect(() => {
+    try {
+      localStorage.setItem('hbb_theme', theme);
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.classList.add('light');
+        document.documentElement.classList.remove('dark');
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    } catch (e) {
+      console.error('Failed to set theme:', e);
+    }
+  }, [theme]);
+
+  // Sync state to local storage
   useEffect(() => {
     if (user) {
       localStorage.setItem('hbb_user', JSON.stringify(user));
@@ -102,13 +127,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     localStorage.setItem('hbb_usage', usageCount.toString());
   }, [usageCount]);
 
-  const maxUsageLimit = user?.plan === 'business' 
-    ? MAX_BUSINESS_LIMIT 
-    : user?.plan === 'starter' 
-    ? MAX_STARTER_LIMIT 
-    : MAX_FREE_LIMIT;
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
 
-  const isUsageLimitReached = usageCount >= maxUsageLimit;
+  const isProUser = user?.plan === 'pro_business';
+  const maxUsageLimit = isProUser ? UNLIMITED_LIMIT : MAX_FREE_LIMIT;
+  const isUsageLimitReached = isProUser ? false : usageCount >= MAX_FREE_LIMIT;
 
   const login = (email: string) => {
     const isAdmin = email.toLowerCase().includes('admin');
@@ -157,7 +182,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const runGeneration = async (input: GenerationInput): Promise<GenerationItem> => {
     if (isUsageLimitReached) {
       setShowUpgradeModal(true);
-      throw new Error("Free limit reached. Please upgrade your plan.");
+      throw new Error("You've reached your free 10 generations limit. Upgrade to Pro Business (₹999) for unlimited generations.");
     }
 
     const result = await generateMarketingContent(input);
@@ -173,6 +198,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       snippet = result.title;
     } else if (Array.isArray(result)) {
       snippet = `${input.calendarDuration || 7}-Day Marketing Content Plan`;
+    } else if ('topRecommendedActions' in result) {
+      snippet = `AI Growth Strategy for ${input.businessName}`;
     }
 
     const newItem: GenerationItem = {
@@ -210,12 +237,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const adminStats: AdminStats = {
-    totalUsers: 1420,
-    activeUsers: 890,
-    totalGenerations: 12450 + history.length,
-    freeUsers: 1100,
-    paidUsers: 320,
+    totalUsers: 1840,
+    activeUsers: 1120,
+    totalGenerations: 18450 + history.length,
+    freeUsers: 1350,
+    paidUsers: 490,
     topGenerators: [
+      { tool: 'growth_ideas', count: 5800 },
       { tool: 'advertisement', count: 4200 },
       { tool: 'whatsapp', count: 3500 },
       { tool: 'instagram', count: 2800 },
@@ -234,6 +262,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         isUsageLimitReached,
         showUpgradeModal,
         setShowUpgradeModal,
+        theme,
+        toggleTheme,
         login,
         logout,
         signup,

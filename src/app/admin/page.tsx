@@ -18,11 +18,11 @@ import {
 import { useApp } from '@/lib/store';
 
 const mockUserList = [
-  { id: 'usr_01', name: 'Hari Bot & Business Solutions', email: 'info@haribotbusiness.com', plan: 'business', generations: 420, date: '2026-08-10' },
-  { id: 'usr_02', name: 'Annapoorna Restaurant', email: 'annapoorna@gmail.com', plan: 'starter', generations: 88, date: '2026-08-14' },
-  { id: 'usr_03', name: 'Vibe Salon & Spa', email: 'vibesalon@yahoo.com', plan: 'free', generations: 4, date: '2026-08-20' },
-  { id: 'usr_04', name: 'Success Tuition Academy', email: 'successtuition@gmail.com', plan: 'starter', generations: 92, date: '2026-08-22' },
-  { id: 'usr_05', name: 'Sri Electronics', email: 'srielectronics@store.in', plan: 'free', generations: 5, date: '2026-08-28' },
+  { id: 'usr_01', name: 'Hari Bot & Business Solutions', email: 'info@haribotbusiness.com', plan: 'pro_business', generations: 420, date: '2026-08-10' },
+  { id: 'usr_02', name: 'Annapoorna Restaurant', email: 'annapoorna@gmail.com', plan: 'pro_business', generations: 88, date: '2026-08-14' },
+  { id: 'usr_03', name: 'Vibe Salon & Spa', email: 'vibesalon@yahoo.com', plan: 'free', generations: 8, date: '2026-08-20' },
+  { id: 'usr_04', name: 'Success Tuition Academy', email: 'successtuition@gmail.com', plan: 'pro_business', generations: 92, date: '2026-08-22' },
+  { id: 'usr_05', name: 'Sri Electronics', email: 'srielectronics@store.in', plan: 'free', generations: 6, date: '2026-08-28' },
 ];
 
 export default function AdminDashboardPage() {
@@ -33,7 +33,7 @@ export default function AdminDashboardPage() {
   const toggleUserPlan = (id: string) => {
     setUserList((prev) =>
       prev.map((u) =>
-        u.id === id ? { ...u, plan: u.plan === 'free' ? 'starter' : u.plan === 'starter' ? 'business' : 'free' } : u
+        u.id === id ? { ...u, plan: (u.plan === 'free' ? 'pro_business' : 'free') as any } : u
       )
     );
   };
@@ -147,21 +147,21 @@ export default function AdminDashboardPage() {
 
             <div className="grid grid-cols-2 gap-4 pt-2">
               <div className="bg-[#0b0f19] p-4 rounded-2xl border border-gray-800 text-center">
-                <span className="text-xs text-gray-400">STARTER (₹199/mo)</span>
-                <div className="text-2xl font-black text-indigo-400 mt-1">210 Stores</div>
-                <span className="text-[10px] text-gray-500 block mt-1">Est. Revenue: ₹41,790/mo</span>
+                <span className="text-xs text-gray-400">FREE TIER (₹0)</span>
+                <div className="text-2xl font-black text-gray-300 mt-1">1,350 Stores</div>
+                <span className="text-[10px] text-gray-500 block mt-1">10 Free Generations Limit</span>
               </div>
 
               <div className="bg-[#0b0f19] p-4 rounded-2xl border border-gray-800 text-center">
-                <span className="text-xs text-gray-400">BUSINESS (₹499/mo)</span>
-                <div className="text-2xl font-black text-pink-400 mt-1">110 Stores</div>
-                <span className="text-[10px] text-gray-500 block mt-1">Est. Revenue: ₹54,890/mo</span>
+                <span className="text-xs text-amber-300 font-bold">PRO BUSINESS (₹999/mo)</span>
+                <div className="text-2xl font-black text-amber-400 mt-1">490 Active Stores</div>
+                <span className="text-[10px] text-gray-400 block mt-1">Unlimited Generations</span>
               </div>
             </div>
 
             <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl text-xs text-emerald-300 flex items-center justify-between">
               <span>Total Estimated MRR:</span>
-              <strong className="text-base text-emerald-400">₹96,680 / month</strong>
+              <strong className="text-base text-emerald-400">₹4,89,510 / month</strong>
             </div>
           </div>
         </div>

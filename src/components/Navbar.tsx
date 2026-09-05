@@ -2,11 +2,11 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Sparkles, Bot, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Sparkles, Bot, ArrowRight, ShieldCheck, Sun, Moon } from 'lucide-react';
 import { useApp } from '@/lib/store';
 
 export const Navbar: React.FC = () => {
-  const { user } = useApp();
+  const { user, theme, toggleTheme } = useApp();
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#090d16]/80 border-b border-gray-800/60">
@@ -43,8 +43,15 @@ export const Navbar: React.FC = () => {
           </Link>
         </nav>
 
-        {/* Action Buttons */}
+        {/* Action Buttons & Theme Switcher */}
         <div className="flex items-center gap-3">
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-xl bg-gray-800/80 hover:bg-gray-700 text-amber-400 border border-gray-700/50 transition-all flex items-center justify-center"
+            title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Theme`}
+          >
+            {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-indigo-600" />}
+          </button>
           {user ? (
             <Link
               href="/dashboard"

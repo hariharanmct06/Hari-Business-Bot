@@ -92,40 +92,55 @@ export const Sidebar: React.FC = () => {
         )}
       </div>
 
-      {/* Free Usage Counter & Upgrade Card */}
+      {/* Usage Counter & Upgrade Card */}
       <div className="p-4 border-t border-gray-800/80">
-        <div className="bg-gradient-to-br from-gray-900 to-indigo-950/40 rounded-xl p-3.5 border border-indigo-500/20 shadow-inner">
-          <div className="flex items-center justify-between text-xs mb-2 font-medium">
-            <span className="text-gray-300 flex items-center gap-1">
-              <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-              Monthly Usage
-            </span>
-            <span className="text-indigo-300 font-semibold">
-              {usageCount} / {maxUsageLimit}
-            </span>
-          </div>
+        <div className="bg-gradient-to-br from-gray-900 to-amber-950/30 rounded-2xl p-4 border border-amber-500/20 shadow-inner">
+          {user?.plan === 'pro_business' ? (
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-xs font-bold">
+                <span className="text-amber-300 flex items-center gap-1.5">
+                  <Crown className="w-4 h-4 text-amber-400" />
+                  PRO BUSINESS
+                </span>
+                <span className="text-emerald-400 font-extrabold text-sm">Unlimited ♾️</span>
+              </div>
+              <p className="text-[11px] text-gray-400">
+                You have unlimited AI generations & priority strategy access.
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-xs font-semibold">
+                <span className="text-gray-300 flex items-center gap-1">
+                  <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                  10 Free Generations
+                </span>
+                <span className="text-amber-300 font-bold">
+                  {usageCount} / 10 Used
+                </span>
+              </div>
 
-          <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden mb-3">
-            <div
-              className={`h-full transition-all duration-500 ${
-                percentage > 80 ? 'bg-amber-500' : 'bg-gradient-to-r from-indigo-500 to-pink-500'
-              }`}
-              style={{ width: `${percentage}%` }}
-            />
-          </div>
+              <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                <div
+                  className={`h-full transition-all duration-500 ${
+                    usageCount >= 8 ? 'bg-rose-500' : 'bg-gradient-to-r from-orange-500 to-amber-400'
+                  }`}
+                  style={{ width: `${Math.min(100, (usageCount / 10) * 100)}%` }}
+                />
+              </div>
 
-          <p className="text-[11px] text-gray-400 mb-3">
-            {user?.plan === 'free' ? `${maxUsageLimit - usageCount} generations remaining on Free plan.` : `Subscribed to ${user?.plan.toUpperCase()} Plan.`}
-          </p>
+              <p className="text-[11px] text-gray-400">
+                {Math.max(0, 10 - usageCount)} / 10 generations remaining on Free tier.
+              </p>
 
-          {user?.plan === 'free' && (
-            <button
-              onClick={() => setShowUpgradeModal(true)}
-              className="w-full flex items-center justify-center gap-1.5 py-2 px-3 bg-gradient-to-r from-indigo-600 to-pink-600 hover:from-indigo-500 hover:to-pink-500 text-white rounded-lg text-xs font-semibold shadow-md transition-all"
-            >
-              <Crown className="w-3.5 h-3.5" />
-              Upgrade Plan
-            </button>
+              <button
+                onClick={() => setShowUpgradeModal(true)}
+                className="w-full mt-2 flex items-center justify-center gap-1.5 py-2 px-3 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white rounded-xl text-xs font-extrabold shadow-md transition-all hover:scale-[1.02]"
+              >
+                <Crown className="w-3.5 h-3.5" />
+                Upgrade to Pro Business — ₹999
+              </button>
+            </div>
           )}
         </div>
       </div>

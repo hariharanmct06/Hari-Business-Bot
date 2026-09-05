@@ -9,12 +9,14 @@ import {
   Globe, 
   User as UserIcon,
   Sparkles,
-  Bot
+  Bot,
+  Sun,
+  Moon
 } from 'lucide-react';
 import { useApp } from '@/lib/store';
 
 export const Header: React.FC = () => {
-  const { user, logout, setShowUpgradeModal } = useApp();
+  const { user, logout, setShowUpgradeModal, theme, toggleTheme } = useApp();
 
   return (
     <header className="sticky top-0 z-40 bg-[#090d16]/90 backdrop-blur-md border-b border-gray-800/80 px-4 sm:px-6 py-3.5 flex items-center justify-between">
@@ -39,23 +41,32 @@ export const Header: React.FC = () => {
 
       {/* Right Side User Profile & Actions */}
       <div className="flex items-center gap-3">
+        {/* Theme Toggle Button */}
+        <button
+          onClick={toggleTheme}
+          className="p-2 rounded-xl bg-gray-800/80 hover:bg-gray-700 text-amber-400 border border-gray-700/50 transition-all flex items-center justify-center"
+          title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Theme`}
+        >
+          {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-indigo-600" />}
+        </button>
+
         <div className="hidden md:flex items-center gap-2 text-xs bg-gray-900 border border-gray-800 px-3 py-1.5 rounded-lg text-gray-300">
           <Globe className="w-3.5 h-3.5 text-indigo-400" />
           <span>{user?.profile?.preferredLanguage || 'Tamil + English'}</span>
         </div>
 
-        {user?.plan === 'free' ? (
+        {user?.plan === 'pro_business' ? (
+          <span className="text-xs px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/40 text-amber-300 font-extrabold flex items-center gap-1.5">
+            <Crown className="w-3.5 h-3.5 text-amber-400" /> PRO BUSINESS ♾️
+          </span>
+        ) : (
           <button
             onClick={() => setShowUpgradeModal(true)}
-            className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-md shadow-amber-500/20 hover:scale-105 transition-all"
+            className="flex items-center gap-1.5 text-xs font-extrabold px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white shadow-md shadow-orange-500/25 transition-all hover:scale-105"
           >
             <Crown className="w-3.5 h-3.5" />
-            Upgrade ₹199
+            Upgrade ₹999
           </button>
-        ) : (
-          <span className="text-xs px-2.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 font-semibold flex items-center gap-1">
-            <Sparkles className="w-3 h-3" /> {user?.plan.toUpperCase()}
-          </span>
         )}
 
         <div className="flex items-center gap-2 border-l border-gray-800 pl-3">
