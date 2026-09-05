@@ -17,12 +17,14 @@ import {
   Bot,
   Zap,
   Crown,
-  Lightbulb
+  Lightbulb,
+  Search
 } from 'lucide-react';
 import { useApp } from '@/lib/store';
 
 const navItems = [
   { name: 'Dashboard', href: '/dashboard', icon: Home },
+  { name: 'SEO Engine', href: '/dashboard/seo', icon: Search },
   { name: 'Growth Ideas', href: '/dashboard/growth-ideas', icon: Lightbulb },
   { name: 'Advertisements', href: '/dashboard/ads', icon: Megaphone },
   { name: 'Posters', href: '/dashboard/posters', icon: Palette },

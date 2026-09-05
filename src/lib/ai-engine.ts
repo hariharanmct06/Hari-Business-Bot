@@ -9,6 +9,7 @@ import {
   GrowthIdeasResult,
   SingleGrowthIdea,
   WeeklyPlanItem,
+  SeoEngineResult,
   GenerationContentResult 
 } from '@/types';
 
@@ -48,6 +49,9 @@ export async function generateMarketingContent(input: GenerationInput): Promise<
 
     case 'growth_ideas':
       return generateGrowthIdeas(input, isTamil, isBilingual, busName, busType, product, location);
+
+    case 'seo_engine':
+      return generateSeoEngine(input, isTamil, isBilingual, busName, busType, product, location);
 
     default:
       throw new Error(`Unsupported content type: ${input.contentType}`);
@@ -698,3 +702,62 @@ function generateGrowthIdeas(
     ideas
   };
 }
+
+// 8. SEO OPTIMIZATION ENGINE GENERATOR
+function generateSeoEngine(
+  input: GenerationInput, 
+  isTamil: boolean, 
+  isBilingual: boolean, 
+  busName: string, 
+  busType: string, 
+  product: string, 
+  location?: string
+): SeoEngineResult {
+  const topic = input.businessName || input.productService || 'Digital Marketing';
+  const kw = input.keyword ? input.keyword.trim() : topic;
+  const loc = (input.location || location || '').trim();
+  const audience = input.targetAudience ? input.targetAudience.trim() : '';
+
+  const clean = (str: string) => str.replace(/[^a-zA-Z0-9\s]/g, '').trim();
+  const cleanKw = clean(kw) || 'Business';
+  const cleanTopic = clean(topic) || 'Marketing';
+  const cleanLoc = clean(loc);
+
+  // Generate 5 SEO-Optimized Title Ideas
+  let titles: string[] = [];
+
+  if (cleanLoc) {
+    titles = [
+      `Best ${cleanKw} Services in ${cleanLoc} for Growing Your Business`,
+      `Top 10 ${cleanTopic} Solutions in ${cleanLoc} You Should Know`,
+      `How to Scale Your Business in ${cleanLoc} Using ${cleanKw}`,
+      `Why Local Businesses in ${cleanLoc} Choose ${cleanTopic}`,
+      `The Ultimate ${cleanKw} Strategy Guide for ${cleanLoc} Stores`
+    ];
+  } else {
+    titles = [
+      `Ultimate Guide to ${cleanKw} for Business Growth & Sales`,
+      `10 Proven ${cleanTopic} Strategies That Drive High Conversion`,
+      `How to Scale Your Brand Fast with High-Impact ${cleanKw}`,
+      `The Secret to Effective ${cleanTopic} and Customer Reach`,
+      `5 Essential ${cleanKw} Tips Every Growing Business Needs`
+    ];
+  }
+
+  // Generate EXACTLY 5 SEO Hashtags (no spaces, starts with #)
+  const toTag = (str: string) => '#' + str.replace(/[^a-zA-Z0-9]/g, '');
+
+  const hashtag1 = toTag(cleanTopic) || '#BusinessGrowth';
+  const hashtag2 = input.keyword ? toTag(input.keyword) : '#SEOOptimization';
+  const hashtag3 = cleanLoc ? toTag(`${cleanLoc}Business`) : '#AIMarketing';
+  const hashtag4 = '#DigitalMarketing';
+  const hashtag5 = '#SEOTips';
+
+  const hashtags = [hashtag1, hashtag2, hashtag3, hashtag4, hashtag5];
+
+  return {
+    titles,
+    hashtags
+  };
+}
+

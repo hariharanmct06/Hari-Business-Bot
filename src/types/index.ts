@@ -5,7 +5,8 @@ export type ToolType =
   | 'whatsapp' 
   | 'reel_script' 
   | 'calendar'
-  | 'growth_ideas';
+  | 'growth_ideas'
+  | 'seo_engine';
 
 export type LanguageOption = 'English' | 'Tamil' | 'Tamil + English';
 
@@ -75,6 +76,8 @@ export interface GenerationInput {
   currentChallenges?: string;
   marketingBudget?: string;
   selectedCategory?: GrowthCategory;
+  // SEO Engine specific options
+  keyword?: string;
 }
 
 export interface AdvertisementResult {
@@ -161,6 +164,11 @@ export interface GrowthIdeasResult {
   ideas: SingleGrowthIdea[];
 }
 
+export interface SeoEngineResult {
+  titles: string[];
+  hashtags: string[];
+}
+
 export type GenerationContentResult = 
   | AdvertisementResult 
   | InstagramResult 
@@ -168,7 +176,8 @@ export type GenerationContentResult =
   | ReelScriptResult 
   | CalendarDayItem[] 
   | PosterResult
-  | GrowthIdeasResult;
+  | GrowthIdeasResult
+  | SeoEngineResult;
 
 export interface GenerationItem {
   id: string;

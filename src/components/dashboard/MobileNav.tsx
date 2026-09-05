@@ -3,10 +3,11 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Sparkles, Palette, MessageSquare, History } from 'lucide-react';
+import { Home, Sparkles, Palette, MessageSquare, History, Search } from 'lucide-react';
 
 const mobileTabs = [
   { name: 'Home', href: '/dashboard', icon: Home },
+  { name: 'SEO', href: '/dashboard/seo', icon: Search },
   { name: 'Ads', href: '/dashboard/ads', icon: Sparkles },
   { name: 'Posters', href: '/dashboard/posters', icon: Palette },
   { name: 'WhatsApp', href: '/dashboard/whatsapp', icon: MessageSquare },

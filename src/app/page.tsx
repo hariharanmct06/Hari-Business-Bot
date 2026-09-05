@@ -15,11 +15,13 @@ import {
   Bot, 
   CheckCircle2, 
   Zap, 
-  Check
+  Check,
+  Search
 } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { UpgradeModal } from '@/components/dashboard/UpgradeModal';
+import { SeoEngineComponent } from '@/components/generators/SeoEngineComponent';
 import { useApp } from '@/lib/store';
 
 export default function LandingPage() {
@@ -155,8 +157,9 @@ export default function LandingPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {[
+            { icon: Search, color: 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20', title: '🔍 SEO Optimization Engine', desc: 'Generate 5 search-optimized title ideas and 5 high-converting SEO hashtags instantly.' },
             { icon: Megaphone, color: 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20', title: '📢 AI Advertisement Generator', desc: 'Generate professional promotional headlines, main copy, offers, and hashtags.' },
             { icon: Palette, color: 'text-pink-400 bg-pink-500/10 border-pink-500/20', title: '🎨 Poster Content Generator', desc: 'Create poster-ready copy with visual live HTML/CSS previews and instant PNG downloads.' },
             { icon: Share2, color: 'text-purple-400 bg-purple-500/10 border-purple-500/20', title: '📱 Instagram Content Generator', desc: 'Engaging captions, hooks, CTAs, emoji suggestions, and viral hashtags.' },
@@ -181,6 +184,11 @@ export default function LandingPage() {
             );
           })}
         </div>
+      </section>
+
+      {/* SEO OPTIMIZATION ENGINE SECTION */}
+      <section id="seo-engine" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full border-t border-gray-800/80">
+        <SeoEngineComponent />
       </section>
 
       {/* HOW IT WORKS */}
