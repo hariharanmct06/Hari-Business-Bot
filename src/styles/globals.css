@@ -33,38 +33,69 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Light Mode Overrides */
+/* ==========================================================================
+   PREMIUM LIGHT THEME OVERRIDES (White + Lavender, High Contrast)
+   ========================================================================== */
+
 html.light body {
   background-color: #f8fafc;
   color: #0f172a;
 }
 
-html.light .bg-\[\#090d16\] {
+/* Light Mode Backgrounds */
+html.light .bg-\[\#090d16\],
+html.light .bg-\[\#070a11\],
+html.light .bg-\[\#0b0f19\],
+html.light .bg-\[\#0d1322\],
+html.light .bg-\[\#0f172a\] {
   background-color: #f8fafc !important;
 }
 
-html.light .bg-[#0b0f19],
-html.light .bg-[#0d1322],
 html.light .bg-gray-900,
 html.light .bg-gray-900\/90,
 html.light .bg-gray-900\/80,
-html.light .bg-gray-900\/60 {
+html.light .bg-gray-900\/60,
+html.light .bg-gray-950,
+html.light .bg-gray-950\/40 {
   background-color: #ffffff !important;
   color: #0f172a !important;
   border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.05), 0 2px 4px -2px rgba(99, 102, 241, 0.05);
 }
 
+html.light .bg-gray-800,
+html.light .bg-gray-800\/80,
+html.light .bg-gray-800\/50,
+html.light .bg-gray-800\/40 {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Light Mode Borders */
 html.light .border-gray-800,
 html.light .border-gray-800\/80,
-html.light .border-gray-800\/60 {
+html.light .border-gray-800\/60,
+html.light .border-gray-700,
+html.light .border-gray-700\/60,
+html.light .border-gray-700\/50 {
   border-color: #e2e8f0 !important;
 }
 
+/* Light Mode Typography & High Contrast Fixes */
 html.light .text-white {
   color: #0f172a !important;
 }
 
-html.light .text-gray-300,
+html.light .text-gray-100,
+html.light .text-gray-200 {
+  color: #1e293b !important;
+}
+
+html.light .text-gray-300 {
+  color: #334155 !important;
+}
+
 html.light .text-gray-400 {
   color: #475569 !important;
 }
@@ -73,29 +104,104 @@ html.light .text-gray-500 {
   color: #64748b !important;
 }
 
-html.light .bg-gray-800,
-html.light .bg-gray-800\/50,
-html.light .bg-gray-800\/40 {
-  background-color: #f1f5f9 !important;
-  color: #0f172a !important;
+/* High Contrast Accent Colors in Light Mode */
+html.light .text-indigo-300,
+html.light .text-indigo-400 {
+  color: #4338ca !important;
 }
 
+html.light .text-amber-300,
+html.light .text-amber-400 {
+  color: #b45309 !important;
+}
+
+html.light .text-emerald-300,
+html.light .text-emerald-400 {
+  color: #047857 !important;
+}
+
+html.light .text-pink-300,
+html.light .text-pink-400 {
+  color: #be185d !important;
+}
+
+html.light .text-blue-300,
+html.light .text-blue-400 {
+  color: #1d4ed8 !important;
+}
+
+html.light .text-purple-300,
+html.light .text-purple-400 {
+  color: #6b21a8 !important;
+}
+
+html.light .text-rose-300,
+html.light .text-rose-400 {
+  color: #be123c !important;
+}
+
+/* Light Mode Lavender Accent Backgrounds */
+html.light .bg-indigo-500\/10,
+html.light .bg-indigo-500\/20,
+html.light .bg-indigo-600\/20 {
+  background-color: #eef2ff !important;
+  border-color: #c7d2fe !important;
+}
+
+html.light .bg-amber-500\/10,
+html.light .bg-amber-500\/20 {
+  background-color: #fffbeb !important;
+  border-color: #fde68a !important;
+}
+
+html.light .bg-emerald-500\/10,
+html.light .bg-emerald-500\/20 {
+  background-color: #ecfdf5 !important;
+  border-color: #a7f3d0 !important;
+}
+
+/* Light Mode Form Elements (Inputs, Selects, Textareas) */
 html.light input,
 html.light select,
 html.light textarea {
   background-color: #ffffff !important;
   color: #0f172a !important;
   border-color: #cbd5e1 !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #64748b !important;
+}
+
+html.light input:focus,
+html.light select:focus,
+html.light textarea:focus {
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2) !important;
+}
+
+/* Light Mode Layout Containers (Sidebar & Header) */
 html.light aside {
   background-color: #ffffff !important;
   border-color: #e2e8f0 !important;
+  box-shadow: 2px 0 8px rgba(99, 102, 241, 0.04);
 }
 
 html.light header {
-  background-color: rgba(255, 255, 255, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
   border-color: #e2e8f0 !important;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.04);
+}
+
+/* Light Mode Custom Scrollbar */
+html.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
 }
 
 /* Custom Scrollbar */
@@ -108,17 +214,9 @@ html.light header {
   background: #0f172a;
 }
 
-html.light ::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
-
 ::-webkit-scrollbar-thumb {
   background: #334155;
   border-radius: 4px;
-}
-
-html.light ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
 }
 
 /* Glassmorphism helpers */
@@ -130,8 +228,9 @@ html.light ::-webkit-scrollbar-thumb {
 }
 
 html.light .glass-card {
-  background: rgba(255, 255, 255, 0.85);
-  border-color: rgba(124, 58, 237, 0.15);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(99, 102, 241, 0.2);
+  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.08);
 }
 
 .text-gradient-primary {
@@ -141,7 +240,7 @@ html.light .glass-card {
 }
 
 html.light .text-gradient-primary {
-  background: linear-gradient(135deg, #6d28d9 0%, #8b5cf6 50%, #ec4899 100%);
+  background: linear-gradient(135deg, #4338ca 0%, #6d28d9 50%, #be185d 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

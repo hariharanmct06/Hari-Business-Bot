@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Sparkles, Bot, ArrowRight, ShieldCheck, Sun, Moon } from 'lucide-react';
+import { Sparkles, Bot, ArrowRight, Sun, Moon } from 'lucide-react';
 import { useApp } from '@/lib/store';
 
 export const Navbar: React.FC = () => {
@@ -35,9 +35,6 @@ export const Navbar: React.FC = () => {
           </Link>
           <Link href="/#pricing" className="hover:text-indigo-400 transition-colors">
             Pricing
-          </Link>
-          <Link href="/admin" className="text-gray-400 hover:text-white transition-colors flex items-center gap-1 text-xs border border-gray-700/50 rounded-full px-2.5 py-1 bg-gray-800/40">
-            <ShieldCheck className="w-3.5 h-3.5 text-indigo-400" /> Admin
           </Link>
         </nav>
 

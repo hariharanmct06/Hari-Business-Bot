@@ -16,7 +16,6 @@ import {
   Settings, 
   Bot,
   Zap,
-  ShieldCheck,
   Crown,
   Lightbulb
 } from 'lucide-react';
@@ -78,16 +77,6 @@ export const Sidebar: React.FC = () => {
             </Link>
           );
         })}
-
-        {user?.isAdmin && (
-          <Link
-            href="/admin"
-            className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-amber-400 bg-amber-500/10 border border-amber-500/20 mt-4 hover:bg-amber-500/20 transition-all"
-          >
-            <ShieldCheck className="w-4 h-4 text-amber-400" />
-            Admin Panel
-          </Link>
-        )}
       </div>
 
       {/* Usage Counter & Upgrade Card */}
