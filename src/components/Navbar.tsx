@@ -13,10 +13,8 @@ export const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-pink-500 p-0.5 shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform">
-            <div className="w-full h-full bg-[#0b0f19] rounded-[10px] flex items-center justify-center">
-              <Bot className="w-6 h-6 text-indigo-400 group-hover:text-pink-400 transition-colors" />
-            </div>
+          <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-pink-500 p-0.5 shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform overflow-hidden">
+            <img src="/logo.png" alt="Hari Bot Logo" className="w-full h-full object-cover rounded-[10px]" />
           </div>
           <div>
             <div className="font-extrabold text-xl tracking-tight text-white flex items-center gap-1.5">

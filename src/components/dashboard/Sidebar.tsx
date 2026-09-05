@@ -45,10 +45,8 @@ export const Sidebar: React.FC = () => {
     <aside className="w-64 bg-[#0d1322] border-r border-gray-800/80 flex flex-col h-screen sticky top-0 shrink-0 hidden lg:flex">
       {/* Brand Header */}
       <div className="p-5 border-b border-gray-800/60 flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-pink-500 p-0.5 shadow-md shadow-indigo-500/20">
-          <div className="w-full h-full bg-[#0b0f19] rounded-[10px] flex items-center justify-center">
-            <Bot className="w-5 h-5 text-indigo-400" />
-          </div>
+        <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-pink-500 p-0.5 shadow-md shadow-indigo-500/20 overflow-hidden">
+          <img src="/logo.png" alt="Hari Bot Logo" className="w-full h-full object-cover rounded-[10px]" />
         </div>
         <div>
           <h1 className="font-extrabold text-base tracking-tight text-white flex items-center gap-1">

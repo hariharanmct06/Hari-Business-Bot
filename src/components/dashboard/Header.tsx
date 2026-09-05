@@ -24,8 +24,8 @@ export const Header: React.FC = () => {
       {/* Mobile Brand Title & Greeting */}
       <div className="flex items-center gap-3">
         <div className="lg:hidden flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center">
-            <Bot className="w-4 h-4 text-white" />
+          <div className="w-8 h-8 rounded-lg bg-indigo-600 overflow-hidden flex items-center justify-center">
+            <img src="/logo.png" alt="Hari Bot Logo" className="w-full h-full object-cover rounded-lg" />
           </div>
           <span className="font-extrabold text-sm text-white">HARI BOT</span>
         </div>

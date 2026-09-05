@@ -9,8 +9,8 @@ export const Footer: React.FC = () => {
     <footer className="bg-[#070a11] border-t border-gray-800/80 text-gray-400 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center">
-            <Bot className="w-5 h-5 text-indigo-400" />
+          <div className="w-9 h-9 rounded-lg bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center overflow-hidden">
+            <img src="/logo.png" alt="Hari Bot Logo" className="w-full h-full object-cover rounded-lg" />
           </div>
           <div>
             <span className="font-bold text-white tracking-tight">HARI BUSINESS BOT</span>

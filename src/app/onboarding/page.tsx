@@ -62,6 +62,9 @@ export default function OnboardingPage() {
 
         {/* Header */}
         <div className="text-center mb-8">
+          <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-600 to-pink-500 p-0.5 shadow-xl mx-auto mb-4 overflow-hidden">
+            <img src="/logo.png" alt="Hari Bot Logo" className="w-full h-full object-cover rounded-[14px]" />
+          </div>
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-semibold mb-3">
             <Sparkles className="w-3.5 h-3.5" /> Welcome to HARI BUSINESS BOT
           </div>

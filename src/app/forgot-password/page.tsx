@@ -19,10 +19,8 @@ export default function ForgotPasswordPage() {
         {/* Brand Logo */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-3 group mb-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-indigo-600 to-pink-500 p-0.5 shadow-lg">
-              <div className="w-full h-full bg-[#0b0f19] rounded-[10px] flex items-center justify-center">
-                <Bot className="w-6 h-6 text-indigo-400" />
-              </div>
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-600 to-pink-500 p-0.5 shadow-xl overflow-hidden">
+              <img src="/logo.png" alt="Hari Bot Logo" className="w-full h-full object-cover rounded-[14px]" />
             </div>
           </Link>
           <h1 className="text-2xl font-extrabold text-white">Reset Password</h1>
