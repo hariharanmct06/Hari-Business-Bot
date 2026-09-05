@@ -18,7 +18,7 @@ import {
 import { useApp } from '@/lib/store';
 
 const mockUserList = [
-  { id: 'usr_01', name: 'CSC Computer Centre', email: 'csc@business.com', plan: 'business', generations: 420, date: '2026-08-10' },
+  { id: 'usr_01', name: 'Hari Bot & Business Solutions', email: 'info@haribotbusiness.com', plan: 'business', generations: 420, date: '2026-08-10' },
   { id: 'usr_02', name: 'Annapoorna Restaurant', email: 'annapoorna@gmail.com', plan: 'starter', generations: 88, date: '2026-08-14' },
   { id: 'usr_03', name: 'Vibe Salon & Spa', email: 'vibesalon@yahoo.com', plan: 'free', generations: 4, date: '2026-08-20' },
   { id: 'usr_04', name: 'Success Tuition Academy', email: 'successtuition@gmail.com', plan: 'starter', generations: 92, date: '2026-08-22' },

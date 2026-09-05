@@ -102,7 +102,7 @@ export default function LandingPage() {
                 {/* Greeting Card */}
                 <div className="bg-gradient-to-r from-indigo-900/60 to-purple-900/40 p-4 rounded-xl border border-indigo-500/30">
                   <span className="text-xs font-semibold text-indigo-300">Good morning 👋</span>
-                  <h4 className="text-sm font-bold text-white mt-0.5">CSC Computer Centre</h4>
+                  <h4 className="text-sm font-bold text-white mt-0.5">Hari Bot & Business Solutions</h4>
                   <p className="text-[11px] text-gray-300 mt-1">What would you like to create today?</p>
                 </div>
 
@@ -132,7 +132,7 @@ export default function LandingPage() {
                 {/* Mock Output Snippet */}
                 <div className="bg-indigo-950/40 p-3.5 rounded-xl border border-indigo-500/30 text-xs font-tamil text-gray-200">
                   <div className="text-[10px] text-indigo-400 uppercase font-bold mb-1">Generated Output (Tamil)</div>
-                  🔥 <strong>CSC Computer Centre</strong>-இல் 50% Independence Day தள்ளுபடி! Tally & Python வகுப்புகளில் இன்றே சேருங்கள்! 📞 98765 43210
+                  🔥 <strong>Hari Bot & Business Solutions</strong>-இல் 50% Independence Day தள்ளுபடி! AI & Digital Marketing வகுப்புகளில் இன்றே சேருங்கள்! 📞 98765 43210
                 </div>
               </div>
             </div>

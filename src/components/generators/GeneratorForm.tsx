@@ -139,7 +139,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({
               required
               value={businessName}
               onChange={(e) => setBusinessName(e.target.value)}
-              placeholder="e.g. CSC Computer Centre"
+              placeholder="e.g. Hari Bot & Business Solutions"
               className="w-full bg-[#0b0f19] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500 transition-colors"
             />
           </div>

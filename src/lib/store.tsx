@@ -30,12 +30,12 @@ interface AppContextType {
 }
 
 const defaultProfile: BusinessProfile = {
-  name: 'CSC Computer Centre',
+  name: 'Hari Bot & Business Solutions',
   type: 'Computer Centre',
   location: 'Main Road, Chennai',
   phone: '9876543210',
-  website: 'www.csccomputer.com',
-  instagram: '@csccomputer_official',
+  website: 'www.haribotbusiness.com',
+  instagram: '@haribot_business_official',
   preferredLanguage: 'Tamil + English',
   onboarded: true,
 };
