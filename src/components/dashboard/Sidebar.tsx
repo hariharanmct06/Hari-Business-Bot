@@ -113,24 +113,24 @@ export const Sidebar: React.FC = () => {
               <div className="flex items-center justify-between text-xs font-semibold">
                 <span className="text-gray-300 flex items-center gap-1">
                   <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-                  10 Free Generations
+                  {user?.plan === 'growth' ? 'Growth (500 AI)' : user?.plan === 'starter' ? 'Starter (200 AI)' : 'Free (10 AI)'}
                 </span>
                 <span className="text-amber-300 font-bold">
-                  {usageCount} / 10 Used
+                  {usageCount} / {maxUsageLimit} Used
                 </span>
               </div>
 
               <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
                 <div
                   className={`h-full transition-all duration-500 ${
-                    usageCount >= 8 ? 'bg-rose-500' : 'bg-gradient-to-r from-orange-500 to-amber-400'
+                    usageCount >= maxUsageLimit * 0.8 ? 'bg-rose-500' : 'bg-gradient-to-r from-orange-500 to-amber-400'
                   }`}
-                  style={{ width: `${Math.min(100, (usageCount / 10) * 100)}%` }}
+                  style={{ width: `${Math.min(100, (usageCount / maxUsageLimit) * 100)}%` }}
                 />
               </div>
 
               <p className="text-[11px] text-gray-400">
-                {Math.max(0, 10 - usageCount)} / 10 generations remaining on Free tier.
+                {Math.max(0, maxUsageLimit - usageCount)} / {maxUsageLimit} Generations Remaining
               </p>
 
               <button
@@ -138,7 +138,7 @@ export const Sidebar: React.FC = () => {
                 className="w-full mt-2 flex items-center justify-center gap-1.5 py-2 px-3 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white rounded-xl text-xs font-extrabold shadow-md transition-all hover:scale-[1.02]"
               >
                 <Crown className="w-3.5 h-3.5" />
-                Upgrade to Pro Business — ₹999
+                Upgrade Plan
               </button>
             </div>
           )}

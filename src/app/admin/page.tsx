@@ -16,11 +16,12 @@ import {
   Lock
 } from 'lucide-react';
 import { useApp } from '@/lib/store';
+import { PlanType } from '@/types';
 
 const mockUserList = [
   { id: 'usr_01', name: 'Hari Bot & Business Solutions', email: 'info@haribotbusiness.com', plan: 'pro_business', generations: 420, date: '2026-08-10' },
-  { id: 'usr_02', name: 'Annapoorna Restaurant', email: 'annapoorna@gmail.com', plan: 'pro_business', generations: 88, date: '2026-08-14' },
-  { id: 'usr_03', name: 'Vibe Salon & Spa', email: 'vibesalon@yahoo.com', plan: 'free', generations: 8, date: '2026-08-20' },
+  { id: 'usr_02', name: 'Annapoorna Restaurant', email: 'annapoorna@gmail.com', plan: 'growth', generations: 188, date: '2026-08-14' },
+  { id: 'usr_03', name: 'Vibe Salon & Spa', email: 'vibesalon@yahoo.com', plan: 'starter', generations: 45, date: '2026-08-20' },
   { id: 'usr_04', name: 'Success Tuition Academy', email: 'successtuition@gmail.com', plan: 'pro_business', generations: 92, date: '2026-08-22' },
   { id: 'usr_05', name: 'Sri Electronics', email: 'srielectronics@store.in', plan: 'free', generations: 6, date: '2026-08-28' },
 ];
@@ -31,10 +32,13 @@ export default function AdminDashboardPage() {
   const [userList, setUserList] = useState(mockUserList);
 
   const toggleUserPlan = (id: string) => {
+    const plans: PlanType[] = ['free', 'starter', 'growth', 'pro_business'];
     setUserList((prev) =>
-      prev.map((u) =>
-        u.id === id ? { ...u, plan: (u.plan === 'free' ? 'pro_business' : 'free') as any } : u
-      )
+      prev.map((u) => {
+        if (u.id !== id) return u;
+        const nextIndex = (plans.indexOf(u.plan as PlanType) + 1) % plans.length;
+        return { ...u, plan: plans[nextIndex] };
+      })
     );
   };
 
@@ -142,26 +146,38 @@ export default function AdminDashboardPage() {
           <div className="lg:col-span-6 bg-gray-900/90 border border-gray-800 rounded-3xl p-6 space-y-4">
             <h3 className="text-base font-bold text-white flex items-center gap-2">
               <Crown className="w-5 h-5 text-amber-400" />
-              Revenue & Subscription Metrics
+              Revenue & Subscription Breakdown
             </h3>
 
-            <div className="grid grid-cols-2 gap-4 pt-2">
-              <div className="bg-[#0b0f19] p-4 rounded-2xl border border-gray-800 text-center">
-                <span className="text-xs text-gray-400">FREE TIER (₹0)</span>
-                <div className="text-2xl font-black text-gray-300 mt-1">1,350 Stores</div>
-                <span className="text-[10px] text-gray-500 block mt-1">10 Free Generations Limit</span>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+              <div className="bg-[#0b0f19] p-3 rounded-2xl border border-gray-800 text-center">
+                <span className="text-[10px] text-gray-400 font-bold block">FREE (₹0)</span>
+                <div className="text-lg font-black text-gray-300 mt-1">1,350</div>
+                <span className="text-[9px] text-gray-500 block">10 AI limit</span>
               </div>
 
-              <div className="bg-[#0b0f19] p-4 rounded-2xl border border-gray-800 text-center">
-                <span className="text-xs text-amber-300 font-bold">PRO BUSINESS (₹999/mo)</span>
-                <div className="text-2xl font-black text-amber-400 mt-1">490 Active Stores</div>
-                <span className="text-[10px] text-gray-400 block mt-1">Unlimited Generations</span>
+              <div className="bg-[#0b0f19] p-3 rounded-2xl border border-gray-800 text-center">
+                <span className="text-[10px] text-blue-300 font-bold block">STARTER (₹299)</span>
+                <div className="text-lg font-black text-blue-400 mt-1">180</div>
+                <span className="text-[9px] text-gray-400 block">200 AI limit</span>
+              </div>
+
+              <div className="bg-[#0b0f19] p-3 rounded-2xl border border-gray-800 text-center">
+                <span className="text-[10px] text-indigo-300 font-bold block">GROWTH (₹499)</span>
+                <div className="text-lg font-black text-indigo-400 mt-1">190</div>
+                <span className="text-[9px] text-gray-400 block">500 AI limit</span>
+              </div>
+
+              <div className="bg-[#0b0f19] p-3 rounded-2xl border border-gray-800 text-center">
+                <span className="text-[10px] text-amber-300 font-bold block">PRO (₹999)</span>
+                <div className="text-lg font-black text-amber-400 mt-1">120</div>
+                <span className="text-[9px] text-gray-400 block">Unlimited ♾️</span>
               </div>
             </div>
 
             <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl text-xs text-emerald-300 flex items-center justify-between">
               <span>Total Estimated MRR:</span>
-              <strong className="text-base text-emerald-400">₹4,89,510 / month</strong>
+              <strong className="text-base text-emerald-400">₹2,68,510 / month</strong>
             </div>
           </div>
         </div>
@@ -210,10 +226,12 @@ export default function AdminDashboardPage() {
                       <button
                         onClick={() => toggleUserPlan(u.id)}
                         className={`px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wide border ${
-                          u.plan === 'business'
-                            ? 'bg-pink-500/20 border-pink-500/40 text-pink-300'
-                            : u.plan === 'starter'
+                          u.plan === 'pro_business'
+                            ? 'bg-amber-500/20 border-amber-500/40 text-amber-300'
+                            : u.plan === 'growth'
                             ? 'bg-indigo-500/20 border-indigo-500/40 text-indigo-300'
+                            : u.plan === 'starter'
+                            ? 'bg-blue-500/20 border-blue-500/40 text-blue-300'
                             : 'bg-gray-800 border-gray-700 text-gray-400'
                         }`}
                         title="Click to toggle plan"

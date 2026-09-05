@@ -57,6 +57,8 @@ const defaultUser: User = {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 const MAX_FREE_LIMIT = 10;
+const MAX_STARTER_LIMIT = 200;
+const MAX_GROWTH_LIMIT = 500;
 const UNLIMITED_LIMIT = 999999;
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -132,8 +134,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const isProUser = user?.plan === 'pro_business';
-  const maxUsageLimit = isProUser ? UNLIMITED_LIMIT : MAX_FREE_LIMIT;
-  const isUsageLimitReached = isProUser ? false : usageCount >= MAX_FREE_LIMIT;
+  const maxUsageLimit = 
+    user?.plan === 'pro_business' ? UNLIMITED_LIMIT :
+    user?.plan === 'growth' ? MAX_GROWTH_LIMIT :
+    user?.plan === 'starter' ? MAX_STARTER_LIMIT : MAX_FREE_LIMIT;
+
+  const isUsageLimitReached = isProUser ? false : usageCount >= maxUsageLimit;
 
   const login = (email: string) => {
     const isAdmin = email.toLowerCase().includes('admin');
@@ -182,7 +188,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const runGeneration = async (input: GenerationInput): Promise<GenerationItem> => {
     if (isUsageLimitReached) {
       setShowUpgradeModal(true);
-      throw new Error("You've reached your free 10 generations limit. Upgrade to Pro Business (₹999) for unlimited generations.");
+      throw new Error(`You've reached your generation limit of ${maxUsageLimit}. Upgrade your plan for more generations.`);
     }
 
     const result = await generateMarketingContent(input);

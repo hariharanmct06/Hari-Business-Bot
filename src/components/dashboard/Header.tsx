@@ -11,7 +11,8 @@ import {
   Sparkles,
   Bot,
   Sun,
-  Moon
+  Moon,
+  Zap
 } from 'lucide-react';
 import { useApp } from '@/lib/store';
 
@@ -59,13 +60,39 @@ export const Header: React.FC = () => {
           <span className="text-xs px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/40 text-amber-300 font-extrabold flex items-center gap-1.5">
             <Crown className="w-3.5 h-3.5 text-amber-400" /> PRO BUSINESS ♾️
           </span>
+        ) : user?.plan === 'growth' ? (
+          <div className="flex items-center gap-2">
+            <span className="text-xs px-3 py-1.5 rounded-full bg-indigo-500/20 border border-indigo-500/40 text-indigo-300 font-extrabold flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-indigo-400" /> GROWTH (500)
+            </span>
+            <button
+              onClick={() => setShowUpgradeModal(true)}
+              className="flex items-center gap-1.5 text-xs font-extrabold px-3 py-1.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white shadow-md transition-all hover:scale-105"
+            >
+              <Crown className="w-3.5 h-3.5" />
+              Upgrade
+            </button>
+          </div>
+        ) : user?.plan === 'starter' ? (
+          <div className="flex items-center gap-2">
+            <span className="text-xs px-3 py-1.5 rounded-full bg-blue-500/20 border border-blue-500/40 text-blue-300 font-extrabold flex items-center gap-1.5">
+              <Zap className="w-3.5 h-3.5 text-blue-400" /> STARTER (200)
+            </span>
+            <button
+              onClick={() => setShowUpgradeModal(true)}
+              className="flex items-center gap-1.5 text-xs font-extrabold px-3 py-1.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white shadow-md transition-all hover:scale-105"
+            >
+              <Crown className="w-3.5 h-3.5" />
+              Upgrade
+            </button>
+          </div>
         ) : (
           <button
             onClick={() => setShowUpgradeModal(true)}
             className="flex items-center gap-1.5 text-xs font-extrabold px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white shadow-md shadow-orange-500/25 transition-all hover:scale-105"
           >
             <Crown className="w-3.5 h-3.5" />
-            Upgrade ₹999
+            Upgrade Plan
           </button>
         )}
 

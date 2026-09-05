@@ -224,104 +224,174 @@ export default function LandingPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {/* FREE PLAN */}
-          <div className="bg-gray-900/90 border border-gray-800 rounded-3xl p-8 flex flex-col justify-between hover:border-gray-700 transition-all shadow-xl">
+          <div className="bg-gray-900/90 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between hover:border-gray-700 transition-all shadow-xl">
             <div>
-              <h3 className="text-2xl font-bold text-white">FREE TIER</h3>
-              <p className="text-xs text-gray-400 mt-1 mb-6">10 Free Generations Included</p>
+              <h3 className="text-xl font-extrabold text-white">FREE</h3>
+              <p className="text-xs text-gray-400 mt-1 mb-4">Try AI Marketing</p>
 
               <div className="mb-6">
-                <span className="text-5xl font-black text-white">₹0</span>
+                <span className="text-4xl font-black text-white">₹0</span>
                 <span className="text-xs text-gray-400"> / forever</span>
               </div>
 
-              <ul className="space-y-3.5 text-xs text-gray-300 mb-8">
-                <li className="flex items-center gap-2 text-sm font-semibold text-white">
-                  <Check className="w-4 h-4 text-emerald-400" />
-                  <strong>10 AI Generations</strong> included
+              <ul className="space-y-3 text-xs text-gray-300 mb-8">
+                <li className="flex items-center gap-2 font-bold text-emerald-400">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <strong>10 AI Generations</strong>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-emerald-400" />
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
                   Instagram Captions & Hooks
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-emerald-400" />
-                  WhatsApp Marketing Messages
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                  WhatsApp Marketing
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-emerald-400" />
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
                   Tamil + English Support
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-emerald-400" />
-                  Standard AI Generation Speed
                 </li>
               </ul>
             </div>
 
             <Link
               href="/signup"
-              className="w-full py-3.5 rounded-2xl bg-gray-800 hover:bg-gray-700 text-white text-center font-bold text-sm transition-all"
+              className="w-full py-3 rounded-2xl bg-gray-800 hover:bg-gray-700 text-white text-center font-bold text-xs transition-all"
             >
-              Get Started Free (10 Generations)
+              Start Free (10 AI)
+            </Link>
+          </div>
+
+          {/* STARTER PLAN */}
+          <div className="bg-gray-900/90 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between hover:border-blue-500/50 transition-all shadow-xl">
+            <div>
+              <h3 className="text-xl font-extrabold text-white flex items-center gap-1.5">
+                STARTER <Zap className="w-4 h-4 text-blue-400" />
+              </h3>
+              <p className="text-xs text-gray-400 mt-1 mb-4">Small Business Starter</p>
+
+              <div className="mb-6">
+                <span className="text-4xl font-black text-white">₹299</span>
+                <span className="text-xs text-gray-400"> / month</span>
+              </div>
+
+              <ul className="space-y-3 text-xs text-gray-300 mb-8">
+                <li className="flex items-center gap-2 font-bold text-blue-400">
+                  <Check className="w-4 h-4 text-blue-400 shrink-0" />
+                  <strong>200 AI Generations</strong>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-blue-400 shrink-0" />
+                  All AI Marketing Tools
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-blue-400 shrink-0" />
+                  Business Growth Ideas
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-blue-400 shrink-0" />
+                  Reel Scripts & Calendars
+                </li>
+              </ul>
+            </div>
+
+            <Link
+              href="/signup"
+              className="w-full py-3 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white text-center font-bold text-xs transition-all shadow-lg shadow-blue-600/20"
+            >
+              Choose Starter — ₹299
+            </Link>
+          </div>
+
+          {/* GROWTH PLAN - MOST POPULAR */}
+          <div className="bg-gradient-to-b from-indigo-950/50 via-gray-900 to-indigo-950/50 border-2 border-indigo-500 rounded-3xl p-6 flex flex-col justify-between relative shadow-2xl shadow-indigo-500/20 hover:border-indigo-400 transition-all">
+            <div className="absolute -top-3.5 right-6 bg-gradient-to-r from-indigo-500 to-pink-500 text-white text-[10px] uppercase font-black tracking-wider px-3.5 py-1 rounded-full shadow-lg">
+              MOST POPULAR 🔥
+            </div>
+
+            <div>
+              <h3 className="text-xl font-extrabold text-white flex items-center gap-1.5">
+                GROWTH <Sparkles className="w-4 h-4 text-indigo-400" />
+              </h3>
+              <p className="text-xs text-indigo-300 font-semibold mt-1 mb-4">Growing Businesses</p>
+
+              <div className="mb-6">
+                <span className="text-4xl font-black text-indigo-300">₹499</span>
+                <span className="text-xs text-gray-400"> / month</span>
+              </div>
+
+              <ul className="space-y-3 text-xs text-gray-200 mb-8">
+                <li className="flex items-center gap-2 font-bold text-indigo-400">
+                  <Check className="w-4 h-4 text-indigo-400 shrink-0" />
+                  <strong>500 AI Generations</strong>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-indigo-400 shrink-0" />
+                  Full AI Growth Strategist
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-indigo-400 shrink-0" />
+                  30-Day Marketing Plans
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-indigo-400 shrink-0" />
+                  Priority Execution Speed
+                </li>
+              </ul>
+            </div>
+
+            <Link
+              href="/signup"
+              className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-pink-600 hover:from-indigo-500 hover:to-pink-500 text-white text-center font-black text-xs transition-all shadow-xl shadow-indigo-600/30"
+            >
+              Choose Growth — ₹499
             </Link>
           </div>
 
           {/* PRO BUSINESS PLAN */}
-          <div className="bg-gradient-to-b from-amber-950/40 via-gray-900 to-orange-950/40 border-2 border-amber-500 rounded-3xl p-8 flex flex-col justify-between relative shadow-2xl shadow-amber-500/20 hover:border-amber-400 transition-all">
-            <div className="absolute -top-3.5 right-6 bg-gradient-to-r from-orange-500 to-amber-500 text-white text-[11px] uppercase font-black tracking-wider px-4 py-1 rounded-full shadow-lg">
-              RECOMMENDED FOR GROWTH
+          <div className="bg-gradient-to-b from-amber-950/40 via-gray-900 to-orange-950/40 border-2 border-amber-500 rounded-3xl p-6 flex flex-col justify-between relative shadow-2xl shadow-amber-500/20 hover:border-amber-400 transition-all">
+            <div className="absolute -top-3.5 right-6 bg-gradient-to-r from-orange-500 to-amber-500 text-white text-[10px] uppercase font-black tracking-wider px-3.5 py-1 rounded-full shadow-lg">
+              UNLIMITED ♾️
             </div>
 
             <div>
-              <h3 className="text-2xl font-black text-white flex items-center gap-2">
-                PRO BUSINESS <Sparkles className="w-5 h-5 text-amber-400" />
+              <h3 className="text-xl font-black text-white flex items-center gap-1.5">
+                PRO BUSINESS <Sparkles className="w-4 h-4 text-amber-400" />
               </h3>
-              <p className="text-xs text-amber-300 font-semibold mt-1 mb-6">Unlimited AI Marketing & Growth Strategist</p>
+              <p className="text-xs text-amber-300 font-semibold mt-1 mb-4">Unlimited Access</p>
 
               <div className="mb-6">
-                <span className="text-5xl font-black text-amber-300">₹999</span>
+                <span className="text-4xl font-black text-amber-300">₹999</span>
                 <span className="text-xs text-gray-400"> / month</span>
               </div>
 
-              <ul className="space-y-3.5 text-xs text-gray-200 mb-8">
-                <li className="flex items-center gap-2 text-sm font-black text-emerald-400">
-                  <Check className="w-4 h-4 text-emerald-400" />
-                  <strong>♾️ Unlimited AI Generations</strong>
+              <ul className="space-y-3 text-xs text-gray-200 mb-8">
+                <li className="flex items-center gap-2 font-black text-emerald-400">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <strong>Unlimited AI Generations</strong>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-amber-400" />
-                  🚀 Business Growth Ideas
+                  <Check className="w-4 h-4 text-amber-400 shrink-0" />
+                  Unlimited Growth Ideas
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-amber-400" />
-                  📱 Digital Marketing Ideas
+                  <Check className="w-4 h-4 text-amber-400 shrink-0" />
+                  All Future Tools Included
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-amber-400" />
-                  🤖 AI-powered business recommendations
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-amber-400" />
-                  📈 Growth strategies & Content ideas
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-amber-400" />
-                  🎯 Marketing campaign concepts
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-amber-400" />
-                  ⚡ Priority AI execution & Save ideas
+                  <Check className="w-4 h-4 text-amber-400 shrink-0" />
+                  Priority 24/7 Engine
                 </li>
               </ul>
             </div>
 
             <Link
               href="/signup"
-              className="w-full py-4 rounded-2xl bg-gradient-to-r from-orange-500 via-amber-500 to-pink-500 hover:from-orange-400 hover:to-pink-400 text-white text-center font-black text-base transition-all shadow-xl shadow-orange-500/30"
+              className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-orange-500 via-amber-500 to-pink-500 hover:from-orange-400 hover:to-pink-400 text-white text-center font-black text-xs transition-all shadow-xl shadow-orange-500/30"
             >
-              Upgrade to Pro Business — ₹999
+              Choose Pro — ₹999
             </Link>
           </div>
         </div>
