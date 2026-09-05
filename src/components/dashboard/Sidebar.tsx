@@ -37,7 +37,7 @@ const navItems = [
 
 export const Sidebar: React.FC = () => {
   const pathname = usePathname();
-  const { usageCount, maxUsageLimit, user, setShowUpgradeModal } = useApp();
+  const { usageCount, maxUsageLimit, user, openPlanActivationModal } = useApp();
 
   const percentage = Math.min(100, Math.round((usageCount / maxUsageLimit) * 100));
 
@@ -132,7 +132,7 @@ export const Sidebar: React.FC = () => {
               </p>
 
               <button
-                onClick={() => setShowUpgradeModal(true)}
+                onClick={() => openPlanActivationModal()}
                 className="w-full mt-2 flex items-center justify-center gap-1.5 py-2 px-3 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white rounded-xl text-xs font-extrabold shadow-md transition-all hover:scale-[1.02]"
               >
                 <Crown className="w-3.5 h-3.5" />

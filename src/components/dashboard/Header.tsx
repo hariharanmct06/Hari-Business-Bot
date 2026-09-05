@@ -17,7 +17,7 @@ import {
 import { useApp } from '@/lib/store';
 
 export const Header: React.FC = () => {
-  const { user, logout, setShowUpgradeModal, theme, toggleTheme } = useApp();
+  const { user, logout, openPlanActivationModal, theme, toggleTheme } = useApp();
 
   return (
     <header className="sticky top-0 z-40 bg-[#090d16]/90 backdrop-blur-md border-b border-gray-800/80 px-4 sm:px-6 py-3.5 flex items-center justify-between">
@@ -66,11 +66,11 @@ export const Header: React.FC = () => {
               <Sparkles className="w-3.5 h-3.5 text-indigo-400" /> GROWTH (500)
             </span>
             <button
-              onClick={() => setShowUpgradeModal(true)}
+              onClick={() => openPlanActivationModal('pro_business')}
               className="flex items-center gap-1.5 text-xs font-extrabold px-3 py-1.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white shadow-md transition-all hover:scale-105"
             >
               <Crown className="w-3.5 h-3.5" />
-              Upgrade
+              Upgrade to Pro
             </button>
           </div>
         ) : user?.plan === 'starter' ? (
@@ -79,7 +79,7 @@ export const Header: React.FC = () => {
               <Zap className="w-3.5 h-3.5 text-blue-400" /> STARTER (200)
             </span>
             <button
-              onClick={() => setShowUpgradeModal(true)}
+              onClick={() => openPlanActivationModal('growth')}
               className="flex items-center gap-1.5 text-xs font-extrabold px-3 py-1.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white shadow-md transition-all hover:scale-105"
             >
               <Crown className="w-3.5 h-3.5" />
@@ -88,7 +88,7 @@ export const Header: React.FC = () => {
           </div>
         ) : (
           <button
-            onClick={() => setShowUpgradeModal(true)}
+            onClick={() => openPlanActivationModal()}
             className="flex items-center gap-1.5 text-xs font-extrabold px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white shadow-md shadow-orange-500/25 transition-all hover:scale-105"
           >
             <Crown className="w-3.5 h-3.5" />

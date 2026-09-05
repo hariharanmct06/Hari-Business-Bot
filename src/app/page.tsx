@@ -22,8 +22,12 @@ import {
 } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
+import { UpgradeModal } from '@/components/dashboard/UpgradeModal';
+import { useApp } from '@/lib/store';
 
 export default function LandingPage() {
+  const { openPlanActivationModal } = useApp();
+
   return (
     <div className="min-h-screen bg-[#090d16] text-white flex flex-col selection:bg-indigo-500 selection:text-white">
       <Navbar />
@@ -226,7 +230,7 @@ export default function LandingPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {/* FREE PLAN */}
-          <div className="bg-gray-900/90 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between hover:border-gray-700 transition-all shadow-xl">
+          <div className="bg-gray-900/90 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between hover:border-gray-700 transition-all shadow-xl cursor-pointer">
             <div>
               <h3 className="text-xl font-extrabold text-white">FREE</h3>
               <p className="text-xs text-gray-400 mt-1 mb-4">Try AI Marketing</p>
@@ -258,14 +262,17 @@ export default function LandingPage() {
 
             <Link
               href="/signup"
-              className="w-full py-3 rounded-2xl bg-gray-800 hover:bg-gray-700 text-white text-center font-bold text-xs transition-all"
+              className="w-full py-3 rounded-2xl bg-gray-800 hover:bg-gray-700 text-white text-center font-bold text-xs transition-all block"
             >
               Start Free (10 AI)
             </Link>
           </div>
 
-          {/* STARTER PLAN */}
-          <div className="bg-gray-900/90 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between hover:border-blue-500/50 transition-all shadow-xl">
+          {/* STARTER PLAN - ₹299 */}
+          <div 
+            onClick={() => openPlanActivationModal('starter')}
+            className="bg-gray-900/90 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between hover:border-blue-500/50 transition-all shadow-xl cursor-pointer group"
+          >
             <div>
               <h3 className="text-xl font-extrabold text-white flex items-center gap-1.5">
                 STARTER <Zap className="w-4 h-4 text-blue-400" />
@@ -297,16 +304,19 @@ export default function LandingPage() {
               </ul>
             </div>
 
-            <Link
-              href="/signup"
-              className="w-full py-3 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white text-center font-bold text-xs transition-all shadow-lg shadow-blue-600/20"
+            <button
+              onClick={(e) => { e.stopPropagation(); openPlanActivationModal('starter'); }}
+              className="w-full py-3 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white text-center font-extrabold text-xs transition-all shadow-lg shadow-blue-600/20"
             >
-              Choose Starter — ₹299
-            </Link>
+              Activate Starter — ₹299
+            </button>
           </div>
 
-          {/* GROWTH PLAN - MOST POPULAR */}
-          <div className="bg-gradient-to-b from-indigo-950/50 via-gray-900 to-indigo-950/50 border-2 border-indigo-500 rounded-3xl p-6 flex flex-col justify-between relative shadow-2xl shadow-indigo-500/20 hover:border-indigo-400 transition-all">
+          {/* GROWTH PLAN - ₹499 */}
+          <div 
+            onClick={() => openPlanActivationModal('growth')}
+            className="bg-gradient-to-b from-indigo-950/50 via-gray-900 to-indigo-950/50 border-2 border-indigo-500 rounded-3xl p-6 flex flex-col justify-between relative shadow-2xl shadow-indigo-500/20 hover:border-indigo-400 transition-all cursor-pointer group"
+          >
             <div className="absolute -top-3.5 right-6 bg-gradient-to-r from-indigo-500 to-pink-500 text-white text-[10px] uppercase font-black tracking-wider px-3.5 py-1 rounded-full shadow-lg">
               MOST POPULAR 🔥
             </div>
@@ -342,16 +352,19 @@ export default function LandingPage() {
               </ul>
             </div>
 
-            <Link
-              href="/signup"
+            <button
+              onClick={(e) => { e.stopPropagation(); openPlanActivationModal('growth'); }}
               className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-pink-600 hover:from-indigo-500 hover:to-pink-500 text-white text-center font-black text-xs transition-all shadow-xl shadow-indigo-600/30"
             >
-              Choose Growth — ₹499
-            </Link>
+              Activate Growth — ₹499
+            </button>
           </div>
 
-          {/* PRO BUSINESS PLAN */}
-          <div className="bg-gradient-to-b from-amber-950/40 via-gray-900 to-orange-950/40 border-2 border-amber-500 rounded-3xl p-6 flex flex-col justify-between relative shadow-2xl shadow-amber-500/20 hover:border-amber-400 transition-all">
+          {/* PRO BUSINESS PLAN - ₹999 */}
+          <div 
+            onClick={() => openPlanActivationModal('pro_business')}
+            className="bg-gradient-to-b from-amber-950/40 via-gray-900 to-orange-950/40 border-2 border-amber-500 rounded-3xl p-6 flex flex-col justify-between relative shadow-2xl shadow-amber-500/20 hover:border-amber-400 transition-all cursor-pointer group"
+          >
             <div className="absolute -top-3.5 right-6 bg-gradient-to-r from-orange-500 to-amber-500 text-white text-[10px] uppercase font-black tracking-wider px-3.5 py-1 rounded-full shadow-lg">
               UNLIMITED ♾️
             </div>
@@ -387,17 +400,18 @@ export default function LandingPage() {
               </ul>
             </div>
 
-            <Link
-              href="/signup"
-              className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-orange-500 via-amber-500 to-pink-500 hover:from-orange-400 hover:to-pink-400 text-white text-center font-black text-xs transition-all shadow-xl shadow-orange-500/30"
+            <button
+              onClick={(e) => { e.stopPropagation(); openPlanActivationModal('pro_business'); }}
+              className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-orange-500 via-amber-500 to-pink-500 hover:from-orange-400 hover:to-amber-400 text-white text-center font-black text-xs transition-all shadow-xl shadow-orange-500/30"
             >
-              Choose Pro — ₹999
-            </Link>
+              Activate Pro — ₹999
+            </button>
           </div>
         </div>
       </section>
 
       <Footer />
+      <UpgradeModal />
     </div>
   );
 }

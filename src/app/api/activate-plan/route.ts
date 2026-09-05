@@ -72,8 +72,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Strict plan-specific code verification
-    const isValid = normalizedCode === expectedCode;
+    // Strict plan-specific code verification (case-insensitive for convenience)
+    const isValid = normalizedCode.toUpperCase() === expectedCode.toUpperCase();
 
     if (!isValid) {
       return NextResponse.json(

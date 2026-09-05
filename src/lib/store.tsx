@@ -21,6 +21,8 @@ interface AppContextType {
   isUsageLimitReached: boolean;
   showUpgradeModal: boolean;
   setShowUpgradeModal: (show: boolean) => void;
+  selectedPlanForModal: PlanType | null;
+  openPlanActivationModal: (plan?: PlanType) => void;
   theme: ThemeMode;
   toggleTheme: () => void;
   login: (email: string) => void;
@@ -66,7 +68,17 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [history, setHistory] = useState<GenerationItem[]>([]);
   const [usageCount, setUsageCount] = useState<number>(0);
   const [showUpgradeModal, setShowUpgradeModal] = useState<boolean>(false);
+  const [selectedPlanForModal, setSelectedPlanForModal] = useState<PlanType | null>(null);
   const [theme, setTheme] = useState<ThemeMode>('dark');
+
+  const openPlanActivationModal = (plan?: PlanType) => {
+    if (plan) {
+      setSelectedPlanForModal(plan);
+    } else {
+      setSelectedPlanForModal(null);
+    }
+    setShowUpgradeModal(true);
+  };
 
   // Initialize state from local storage on client mount
   useEffect(() => {
@@ -268,6 +280,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         isUsageLimitReached,
         showUpgradeModal,
         setShowUpgradeModal,
+        selectedPlanForModal,
+        openPlanActivationModal,
         theme,
         toggleTheme,
         login,
