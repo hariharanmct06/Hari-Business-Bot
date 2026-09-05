@@ -81,7 +81,7 @@ export default function DashboardOverviewPage() {
               What would you like to create today?
             </h1>
             <p className="text-xs sm:text-sm text-gray-300 mt-1 max-w-xl">
-              Configured for <strong className="text-white">{user?.profile?.name || 'Your Business'}</strong> ({user?.profile?.type || 'Local Shop'}) in <span className="text-indigo-300">{user?.profile?.preferredLanguage || 'Tamil + English'}</span>.
+              Configured for <strong className="text-white">{user?.profile?.name || 'Hari Bot & Business Solutions'}</strong> ({user?.profile?.type || 'AI & Business Solutions'}) in <span className="text-indigo-300">{user?.profile?.preferredLanguage || 'Tamil + English'}</span>.
             </p>
           </div>
 

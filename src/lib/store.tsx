@@ -31,7 +31,7 @@ interface AppContextType {
 
 const defaultProfile: BusinessProfile = {
   name: 'Hari Bot & Business Solutions',
-  type: 'Computer Centre',
+  type: 'AI & Business Solutions',
   location: 'Main Road, Chennai',
   phone: '9876543210',
   website: 'www.haribotbusiness.com',
@@ -69,7 +69,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       const savedHistory = localStorage.getItem('hbb_history');
       const savedUsage = localStorage.getItem('hbb_usage');
 
-      if (savedUser) setUser(JSON.parse(savedUser));
+      if (savedUser) {
+        const parsed = JSON.parse(savedUser);
+        // Automatically migrate any legacy stored CSC name/type
+        if (parsed?.profile?.name?.includes('CSC') || parsed?.profile?.type === 'Computer Centre') {
+          parsed.profile.name = 'Hari Bot & Business Solutions';
+          parsed.profile.type = 'AI & Business Solutions';
+        }
+        setUser(parsed);
+      }
       if (savedHistory) setHistory(JSON.parse(savedHistory));
       if (savedUsage) setUsageCount(parseInt(savedUsage, 10));
     } catch (e) {

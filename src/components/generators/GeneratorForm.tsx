@@ -28,6 +28,7 @@ interface GeneratorFormProps {
 }
 
 const businessTypes = [
+  'AI & Business Solutions',
   'Computer Centre',
   'Tuition Centre',
   'Restaurant / Food',
@@ -72,7 +73,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({
   const { user } = useApp();
 
   const [businessName, setBusinessName] = useState('');
-  const [businessType, setBusinessType] = useState('Computer Centre');
+  const [businessType, setBusinessType] = useState('AI & Business Solutions');
   const [productService, setProductService] = useState('');
   const [offerDiscount, setOfferDiscount] = useState('');
   const [targetAudience, setTargetAudience] = useState('');

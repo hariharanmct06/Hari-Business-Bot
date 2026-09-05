@@ -7,6 +7,7 @@ import { useApp } from '@/lib/store';
 import { LanguageOption } from '@/types';
 
 const businessTypeOptions = [
+  'AI & Business Solutions',
   'Computer Centre',
   'Tuition Centre',
   'Restaurant / Food',
@@ -30,7 +31,7 @@ export default function OnboardingPage() {
   const { user, updateBusinessProfile } = useApp();
 
   const [businessName, setBusinessName] = useState(user?.profile?.name || '');
-  const [businessType, setBusinessType] = useState(user?.profile?.type || 'Computer Centre');
+  const [businessType, setBusinessType] = useState(user?.profile?.type || 'AI & Business Solutions');
   const [location, setLocation] = useState(user?.profile?.location || '');
   const [phone, setPhone] = useState(user?.profile?.phone || '');
   const [website, setWebsite] = useState(user?.profile?.website || '');
